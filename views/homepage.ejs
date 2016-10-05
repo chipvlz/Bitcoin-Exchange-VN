@@ -1,7 +1,16 @@
 <%- partial ('common/navbar.ejs') %>
-<div class="container">
-  ok
-</div>
 
+<div class="container">
+  <div class="row content">
+
+      <%- partial ('templates/left.ejs') %>
+
+      <div class="tab-content">
+          <%- partial ('templates/mua_bitcoin.ejs') %>
+          <%- partial ('templates/ban_bitcoin.ejs') %>
+      </div>
+
+  </div>
+</div>
 
 <%- partial ('common/footer.ejs') %>

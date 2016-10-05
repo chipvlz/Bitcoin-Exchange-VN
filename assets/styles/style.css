@@ -11,8 +11,10 @@ body {
 }
 .sidenav {
   padding-top: 20px;
-  background-color: #f1f1f1;
-
+  background-color: #353535;
+}
+.sidenav h4 {
+  color:#fff;
 }
 .jumbotron {
   background:#4b8c95;

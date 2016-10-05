@@ -1,0 +1,63 @@
+<div class="col-sm-6 tab-pane in active" id="ban_bitcoin">
+  <h4>BÁN Bitcoin</h4>
+  <div class="panel panel-warning">
+    <div class="panel-heading">Giao dịch tự động trong vòng 5s qua Vietcombank 24/7
+      (kể cả ban đêm & cuối tuần)</div>
+    <div class="panel-body">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="btc_buy">Số lượng BTC bán:</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <input id="btc_buy" autocomplete="off"  name="btc_buy" id="btc" placeholder="e.g.: 10" class="blue_ form-control"  type="text">
+              <div class="input-group-addon blue_">BTC</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-5 control-label">Ngân hàng nhận tiền Vietcombank</label>
+          <div class="col-md-6 inputGroupContainer">
+            <div class="input-group"><p>Vietcombank</p></div>
+          </div>
+        </div>
+        <div class="form-group has-feedback has-danger">
+          <label class="col-md-4 control-label">Số tài khoản nhận tiền</label>
+          <div class="col-md-8">
+            <div class="input-group">
+              <input type="text" class="form-control" name="number_vcb" id="number_vcb" value="" placeholder="">
+              <div id="check_" class="input-group-addon border">
+                <i id="icon_put" class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                <i id="icon_load" class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
+                <i id="icon_done" class="fa fa-check" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="name_vcb">Tên tài khoản nhận tiền:</label>
+          <div class="col-sm-8">
+            <input type="text" readonly="" name="name_vcb" value="" class="form-control" id="name_vcb" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="money_buy">Số tiền nhận:</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <input id="tiennhan" readonly="" name="money_buy" placeholder="0" class="form-control"  type="text"><div class="input-group-addon border">VNĐ</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="name_vcb">Chúng tôi còn:</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <input readonly="" name="" id="bqt" value="" placeholder="300,000,000" class="form-control"  type="text"><div class="input-group-addon border">VNĐ</div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="panel-footer"><input type="submit" class="btn btn-warning" value="Tiếp Tục"></div>
+  </div>
+
+</div>

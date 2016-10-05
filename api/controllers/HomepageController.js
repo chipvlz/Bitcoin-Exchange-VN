@@ -14,6 +14,7 @@ module.exports = {
       textDesc: '',
       textVersion: '1.0.1'
     };
+    
     return res.view("homepage",data)
   }
 };
