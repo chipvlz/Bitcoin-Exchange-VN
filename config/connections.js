@@ -36,16 +36,7 @@ module.exports.connections = {
   //   connection: 'mysqldb',
   //   migrate: 'safe'//drop no xoa het:s cho no sach
   // },
-  // connections: {
-  //   mysqldb: {
-  //     adapter: 'sails-mysql',
-  //     host: 'crm.taovang.vn',
-  //     port: 3308,
-  //     user: 'root', //optional
-  //     password: 'TaoVang!9999', //optional
-  //     database: 'kingproj' //optional
-  //   }
-  // }
+  
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *
@@ -54,23 +45,7 @@ module.exports.connections = {
   * Run: npm install sails-mysql                                             *
   *                                                                          *
   ***************************************************************************/
-  someMysqlServer: {
-    adapter: 'sails-mysql',
-    host: 'crm.taovang.vn',
-    port: 3308,
-    user: 'root', //optional
-    password: 'TaoVang!9999', //optional
-    database: 'kingproj' //optional
-  },
-
-  onlineMysqlServer: {
-    adapter: 'sails-mysql',
-    host: 'sannhuabaclieu.com',
-    port: 3306,
-    user: 'sanc14d1_root', //optional
-    password: 'Diablo321', //optional
-    database: 'sanc14d1_data' //optional
-  }
+  
 
   /***************************************************************************
   *                                                                          *
