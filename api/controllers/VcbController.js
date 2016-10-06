@@ -18,7 +18,7 @@ module.exports = {
 
       if (!found) {
         request.get({
-          url: 'https://santienao.com/api/v1/bank_accounts/'+params.number_vcb
+          url: 'xxxxxxx/'+params.number_vcb
         },function(error,response,body){
           if(error) {
             sails.log.error(error);
