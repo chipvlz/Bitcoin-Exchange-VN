@@ -45,11 +45,14 @@ module.exports.routes = {
   '/admin/user/del/:id': 'AdminController.userdel',
   '/view/user/:id':'UserController.userid',
   '/admin/match/add':'AdminController.addmatch',
-  
+
+  // EXCHANGE FUNCTION
+  '/sell/:i': 'ExchangeController.sell',
+  // END FUNCTION
+
   '/upload': {
     view: 'upload/index'
   },
-
   '/get': {
     view: 'common/result'
   }

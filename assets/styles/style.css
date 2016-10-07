@@ -6,10 +6,7 @@ body {
 a:hover, a:focus {
   text-decoration: none !important;
 }
-a:focus > li.list-group-item {
-  background:#a94442;
-  color:#fff;
-}
+
 .list-group-item:last-child {
   margin-bottom: -1px;
   border-radius:0;
@@ -83,7 +80,12 @@ input#number_vcb , input#name_vcb {
 div#check_ {
   min-width: 56px;
 }
-
+p.txt_vcb {
+  color:#336734;
+  font-weight: bold;
+  font-size:16px;
+  line-height: 30px;
+}
 
 table input[type="checkbox"] {
   position: relative !important;

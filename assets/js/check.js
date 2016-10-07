@@ -2,7 +2,7 @@ $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
-  $(document).ready(function() {
+  $('#check').ready(function() {
     $('#icon_done').hide();
     $('#icon_load').hide();
     $('#icon_close').hide();
@@ -50,39 +50,36 @@ $(function() {
       }
     });
 
-    // $.ajax({
-    //   url : url,
-    //   type : "POST",
-    //   dateType:"json",
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'text/plain'
-    //   },
-    //   data : {
-    //     'number_vcb' : number
-    //   },
-    //   success : function (result){
-    //     var json = JSON.parse(result);
-    //     var name = json.account_name;
-    //     if (name == null){
-    //       getname_vcb(number);
-    //     }
-    //     else{
-    //       $('#icon_load').hide();
-    //       $('#icon_done').show();
-    //       if (name=="N/A")
-    //       {
-    //         $('#taikhoan_khongdung').show();
-    //       }
-    //       else
-    //       {
-    //         $('#name_vcb').val(name);
-    //         $('label.blue').css({'color':'#468847'});
-    //         $('input.blue').css({'border':'1px solid #468847'});
-    //       }
-    //     }
-    //
+    $('#btc_sell').keyup(function(){
+      var btc_sell = $('#btc_sell').val();
+      var btc_price_sell = $('span#btc-price-sell').text();
+      if (parseFloat(btc_sell) >= 0.01 ) {
+        $('input[name=btc_sell]').css({'border':'1px solid #468847',
+          'color':'#468847'
+        });
+        $('input[name=money_buy]').css({'color':'#468847'});
+        $('input[name=money_buy]').val((parseFloat(btc_sell) * parseFloat(btc_price_sell)).toFixed(2));
+      } else {
+        $('input[name=btc_sell]').css({'border':'1px solid #a90000',
+          'color':'#a90000'
+        });
+        $('input[name=money_buy]').css({'color':'#a90000'});
+        $('input[name=money_buy]').val('Số lượng tối thiểu là 0.01 BTC')
+      }
+
+
+    });
+    // $('#number_sell').keyup(function(){
+    //   var number_sell = jQuery('#number_sell').val();
+    //   if (parseFloat(number_sell) > 0,01 ){
+    //     jQuery('label.blue_2').css({'color':'#468847'});
+    //     jQuery('input.blue_2').css({'border':'1px solid #468847'});
+    //     jQuery('.input-group-addon.blue_2').css({'border':'1px solid #468847',
+    //       'background':'#dff0d8',
+    //       'color':'#468847'
+    //     });
     //   }
+    //   jQuery('#money_tra').val(parseFloat(number_sell) * parseFloat(<?php echo $sell_bitcoin?>));
     // });
 
 

@@ -68,8 +68,15 @@ $(function() {
     socket.get("/admin/userdel?id="+searchIDs)
   });
   //END USER MANAGEMENT
+  var check_active = $('div.active h4').text();
+  if (check_active == 'Bitcoin') {
+    $('li.sell-btc-active').addClass('active');
+  } else if ( check_active == 'Btc-e') {
+    $('li.sell-btce-active').addClass('active');
+  } else {
+    $('li.sell-pm-active').addClass('active');
+  }
 
-  
 
 });
 
