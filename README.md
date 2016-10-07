@@ -1,5 +1,5 @@
 # Bitcoin Exchange
-_Using SailsJS Frameword_**by Khánh Trần**
+_Using SailsJS Framework_ **by Khánh Trần**
 
 Contact Me
 ---------
