@@ -1,46 +1,94 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
+/* Main Page */
 body {
-  background:#f1f1f1 !important;
   letter-spacing: 0.5px;
 }
+a:hover, a:focus {
+  text-decoration: none !important;
+}
+a:focus > li.list-group-item {
+  background:#a94442;
+  color:#fff;
+}
+.list-group-item:last-child {
+  margin-bottom: -1px;
+  border-radius:0;
+}
+li.list-group-item:hover {
+  background:#616161;
+  color:#fff;
+}
+.list-group-item > .badge {
+  background: #fcf8e3;
+  color:#08c;
+}
+/* Top Page */
 .navbar {
   margin-bottom: 10px;
   border-radius: 0;
-
-
 }
-.sidenav {
-  padding-top: 20px;
-  background-color: #353535;
-}
-.sidenav h4 {
-  color:#fff;
+.nav-tabs {
+  border:none !important;
 }
 .jumbotron {
   background:#4b8c95;
   color:#f5e1ca !important;
 }
 
-/* Add a gray background color and some padding to the footer */
-footer {
-  margin-top:20px;
-  background-color: #f2f2f2;
-  padding: 25px;
-}
-table input[type="checkbox"] {
-  position: relative !important;
-}
-
 .carousel-inner img {
   width: 100%; /* Set width to 100% */
   min-height: 200px;
 }
+
 /* Hide the carousel text when the screen is less than 600 pixels wide */
 @media (max-width: 600px) {
   .carousel-caption {
     display: none;
   }
 }
+ /*Left Side */
+.sidenav {
+  background-color: #ecf0f1;
+}
+.sidenav h4 {
+  color:#5a5a5a;
+  font-weight: 200;
+}
+span.title_ban {
+  color:#a90000;
+  font-weight: bold;
+  font-size: 24px;
+}
+span.title_mua {
+  color:#0088cc;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+ /*Icon Color */
+.fa-credit-card-alt:before {
+  color:#004c92;
+}
+.fa-check:before {
+  color:#408841;
+}
+.fa-times:before {
+  color:#a94442;
+}
+input#number_vcb , input#name_vcb {
+  font-size: 18px;
+  font-weight: 500;
+}
+/* Content Page */
+div#check_ {
+  min-width: 56px;
+}
+
+
+table input[type="checkbox"] {
+  position: relative !important;
+}
+
 @media (max-width: 600px) {
   .container {
     padding-right: 0 !important;
@@ -84,9 +132,7 @@ span.review-content {
 .top-review ul.list-group {
   margin:0;
 }
-.nav-tabs {
-  border:none !important;
-}
+
 select#threads {
   max-width: 250px;
 }
@@ -96,4 +142,11 @@ select#status {
 form#login {
   background:#fff;
   padding:20px;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  margin-top:20px;
+  background-color: #f2f2f2;
+  padding: 25px;
 }
