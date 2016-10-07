@@ -1,14 +1,16 @@
-<div class="col-sm-4 sidenav">
+<div class="col-sm-4 sidenav" id="mua_ban">
   <h4>Bạn muốn <span class="title_ban">BÁN</span></h4>
   <ul class="list-group">
-    <a data-toggle="tab" href="#ban_bitcoin"><li class="list-group-item"><img src="images/btc.ico"> Bitcoin <span class="badge">12</span></li></a>
-    <a data-toggle="tab" href="#ban_btc-e"><li class="list-group-item"><img src="images/btce.ico"> BTC-e <span class="badge">12</span></li></a>
-    <a data-toggle="tab" href="#ban_pm"><li class="list-group-item"><img src="images/pm.ico" width="16px"> Perfect Money <span class="badge">12</span></li></a>
+    <% _.each(foundItem, function(item) { %>
+    <a href="/sell/<%= item.link %>"><li class="list-group-item sell-<%= item.link %>-active">
+        <img src="/images/<%= item.link %>.ico"> <%= item.name %> <span class="badge" id="<%= item.link %>-price-sell"><%= item.price_sell %></span></li>
+    </a>
+    <% }) %>
   </ul>
   <h4>Bạn muốn <span class="title_mua">MUA</span></h4></h4>
   <ul class="list-group">
-    <a data-toggle="tab" href="#mua_bitcoin"><li class="list-group-item"><img src="images/btc.ico"> Bitcoin <span class="badge">12</span></li></a>
-    <a data-toggle="tab" href="#mua_btc-e"><li class="list-group-item"><img src="images/btce.ico"> BTC-e <span class="badge">12</span></li></a>
-    <a data-toggle="tab" href="#mua_pm"><li class="list-group-item"><img src="images/pm.ico" width="16px"> Perfect Money <span class="badge">12</span></li></a>
+    <a data-toggle="tab" href="#mua_bitcoin"><li class="list-group-item"><img src="/images/btc.ico"> Bitcoin <span class="badge">12</span></li></a>
+    <a data-toggle="tab" href="#mua_btce"><li class="list-group-item"><img src="/images/btce.ico"> BTC-e <span class="badge">12</span></li></a>
+    <a data-toggle="tab" href="#mua_pm"><li class="list-group-item"><img src="/images/pm.ico" width="16px"> Perfect Money <span class="badge">12</span></li></a>
   </ul>
 </div>

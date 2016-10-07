@@ -1,23 +1,26 @@
+<!--TRANG BÁN-->
+
+<!--BÁN BITCOIN-->
 <div class="col-sm-8 tab-pane in active" id="ban_bitcoin">
-  <h4>BÁN Bitcoin</h4>
+  <h4><%= title %></h4>
   <div class="panel panel-warning">
     <div class="panel-heading">Giao dịch tự động trong vòng 5s qua Vietcombank 24/7
       (kể cả ban đêm & cuối tuần)</div>
     <div class="panel-body">
-      <form class="form-horizontal">
+      <form class="form-horizontal" id="form_ban_bitcoin">
         <div class="form-group">
-          <label class="control-label col-sm-4" for="btc_buy">Số lượng BTC:</label>
+          <label class="control-label col-sm-4" for="btc_sell">Số lượng <%= txt %>:</label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input id="btc_buy" autocomplete="off"  name="btc_buy" id="btc" placeholder="e.g.: 10" class="blue_ form-control"  type="text">
-              <div class="input-group-addon blue_">BTC</div>
+              <input id="btc_sell" autocomplete="off"  name="btc_sell" id="btc" placeholder="e.g.: 10" class="blue_ form-control"  type="text">
+              <div class="input-group-addon blue_"><%= txt %></div>
             </div>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-4 control-label">Ngân hàng nhận tiền</label>
           <div class="col-sm-8 inputGroupContainer">
-            <div class="input-group"><p>Vietcombank</p></div>
+            <div class="input-group"><p class="txt_vcb">Vietcombank</p></div>
           </div>
         </div>
         <div class="form-group has-feedback has-danger">
@@ -60,5 +63,6 @@
     </div>
     <div class="panel-footer"><input type="submit" class="btn btn-warning" value="Tiếp Tục"></div>
   </div>
-
 </div>
+<!--END BÁN BITCOIN-->
+
