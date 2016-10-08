@@ -1,0 +1,46 @@
+<%- partial ('../common/navbar.ejs') %>
+
+<div class="container">
+  <div class="panel panel-warning">
+    <div class="panel-heading">Kiểm Tra Giao Dịch</div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+
+        <tbody>
+        <tr>
+          <td>Loại giao dịch</td>
+          <td><%= foundBill.ex %> <%= foundBill.item %></td>
+        </tr>
+
+        <tr>
+          <td>Mã giao dịch</td>
+          <td><%= foundBill.code %></td>
+        </tr>
+
+        <tr>
+          <td>Số tài khoản </td>
+          <td><%= foundBill.number %></td>
+        </tr>
+
+        <tr>
+          <td>Tên người nhận</td>
+          <td><%= foundBill.name %></td>
+        </tr>
+
+        <tr>
+          <td>Số tiền nhận</td>
+          <td><%= foundBill.price %></td>
+        </tr>
+
+        <tr>
+          <td>Trạng Thái</td>
+          <td><%= foundBill.status %></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<%- partial ('../common/footer.ejs') %>

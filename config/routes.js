@@ -48,6 +48,7 @@ module.exports.routes = {
 
   // EXCHANGE FUNCTION
   '/sell/:i': 'ExchangeController.sell',
+  '/checkbill/:i': 'ExchangeController.view',
   // END FUNCTION
 
   '/upload': {

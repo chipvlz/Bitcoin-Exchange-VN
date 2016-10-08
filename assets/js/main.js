@@ -9,11 +9,11 @@ $(function() {
     console.log('gọi hàm submit');
     e.preventDefault();
     var data = $('#login').serialize();
-    socket.get('/user/login?' + data);
+    socket.get('/user/login?' + data)
   });
   // Khi client nhận thông báo login-success từ server sẽ chuyển user sang trang home
   socket.on('user/login-success', function() {
-    window.location = '/trangchu';
+    window.location = '/trangchu'
   });
 
   $('#register').submit(function (r) {
@@ -24,11 +24,11 @@ $(function() {
   });
   socket.on('user/registered', function() {
     $('#regModal p').text("Đăng ký thành công, hãy đăng nhập");
-    $('#regModal').modal();
+    $('#regModal').modal()
   });
   socket.on('user/exists', function() {
     $('#regModal p').text("Đã có người đăng ký tài khoản này");
-    $('#regModal').modal();
+    $('#regModal').modal()
   });
 
   // x-editable
@@ -47,16 +47,50 @@ $(function() {
         delete params['pk'];
         delete params['name'];
         delete params['value'];
-
         params[keyToUpdate] = updateText;
-
-        return params;
+        return params
       }, title: title, ajaxOptions: {
         type: 'put'
       }
-    });
-
+    })
   });
+
+
+  // Tạo chuỗi ramdom làm mã giao dịch
+  function excode(length, special) {
+    var iteration = 0;
+    var excode = "";
+    var randomNumber;
+    if(special == undefined){
+      var special = false;
+    }
+    while(iteration < length){
+      randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
+      if(!special){
+        if ((randomNumber >=33) && (randomNumber <=47)) { continue; }
+        if ((randomNumber >=58) && (randomNumber <=64)) { continue; }
+        if ((randomNumber >=91) && (randomNumber <=96)) { continue; }
+        if ((randomNumber >=123) && (randomNumber <=126)) { continue; }
+      }
+      iteration++;
+      excode += String.fromCharCode(randomNumber);
+    }
+    return excode;
+  }
+  // tạo xong
+
+  // Xử lý form bán
+  $('#form_sell').submit(function (s) {
+    console.log('gọi hàm bán');
+    s.preventDefault();
+    var data = $('#form_sell').serialize();
+    socket.get('/exchange/ban?excode='+excode(12)+'&'+data)
+  });
+
+  socket.on('sell/pending', function(data) {
+    window.location = '/checkbill/'+data.send_code
+  });
+  // xử lý xong
 
   // Xóa multi ID
   $("#removeid").click(function(event){
@@ -68,6 +102,7 @@ $(function() {
     socket.get("/admin/userdel?id="+searchIDs)
   });
   //END USER MANAGEMENT
+
   var check_active = $('div.active h4').text();
   if (check_active == 'Bitcoin') {
     $('li.sell-btc-active').addClass('active');
@@ -76,9 +111,8 @@ $(function() {
   } else {
     $('li.sell-pm-active').addClass('active');
   }
-
-
 });
+
 
 // Image Upload with preview
 function showMyImage(fileInput) {

@@ -50,21 +50,21 @@ $(function() {
       }
     });
 
-    $('#btc_sell').keyup(function(){
-      var btc_sell = $('#btc_sell').val();
-      var btc_price_sell = $('span#btc-price-sell').text();
-      if (parseFloat(btc_sell) >= 0.01 ) {
-        $('input[name=btc_sell]').css({'border':'1px solid #468847',
+    $('#quantity_sell').keyup(function(){
+      var quantity_sell = $('#quantity_sell').val();
+      var price_sell = $('span#btc-price-sell').text();
+      if (parseFloat(quantity_sell) >= 0.01 ) {
+        $('input[name=quantity_sell]').css({'border':'1px solid #468847',
           'color':'#468847'
         });
-        $('input[name=money_buy]').css({'color':'#468847'});
-        $('input[name=money_buy]').val((parseFloat(btc_sell) * parseFloat(btc_price_sell)).toFixed(2));
+        $('input[name=money_recieve]').css({'color':'#468847'});
+        $('input[name=money_recieve]').val((parseFloat(quantity_sell) * parseFloat(price_sell)).toFixed(2));
       } else {
-        $('input[name=btc_sell]').css({'border':'1px solid #a90000',
+        $('input[name=quantity_sell]').css({'border':'1px solid #a90000',
           'color':'#a90000'
         });
-        $('input[name=money_buy]').css({'color':'#a90000'});
-        $('input[name=money_buy]').val('Số lượng tối thiểu là 0.01 BTC')
+        $('input[name=money_recieve]').css({'color':'#a90000'});
+        $('input[name=money_recieve]').val('Số lượng tối thiểu là 0.01 BTC')
       }
 
 

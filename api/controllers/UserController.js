@@ -17,8 +17,6 @@ module.exports = {
       req.session.user = result; // store hết user data vào object user trong session
 
       let session_id = req.signedCookies['sails.sid'];
-
-
       sails.sockets.join(req, 'logged'); // Đưa user vừa đăng nhập vào room Logged
       sails.sockets.join(req, session_id); // Đưa user vừa đăng nhập vào room của chính bản thân user
       sails.sockets.broadcast(session_id, 'user/login-success', { message: "đăng nhập thành công", all_session_data: req.session});

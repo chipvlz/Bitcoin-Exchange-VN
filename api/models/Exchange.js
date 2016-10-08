@@ -11,7 +11,7 @@ module.exports = {
     ex: {
       type: 'string'
     },
-    ex_type: {
+    item: {
       type: 'string'
     },
     price: {
