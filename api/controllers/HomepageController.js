@@ -8,22 +8,16 @@ var BTCE = require('btc-e');
 
 module.exports = {
   index: (req,res) => {
-    let btceTrade = new BTCE("EUFCWRWU-MZSO7VDI-4NE6O4WF-LV43MDDJ-0BNY37GY", "7f22fb03a30dfb23c7cc270707b62e815f9fff25d112f1444b2e35b5cbc584f6"),
-      // No need to provide keys if you're only using the public api methods.
-      btcePublic = new BTCE();
-
-// Public API method call.
-// Note: Could use "btceTrade" here as well.
-//     btcePublic.ticker("ltc_btc", function(err, data) {
-//       console.log(err, data);
+//     let btceTrade = new BTCE("EUFCWRWU-MZSO7VDI-4NE6O4WF-LV43MDDJ-0BNY37GY", "7f22fb03a30dfb23c7cc270707b62e815f9fff25d112f1444b2e35b5cbc584f6"),
+//       // No need to provide keys if you're only using the public api methods.
+//       btcePublic = new BTCE();
+//
+// // Trade API method call.
+//     btceTrade.getInfo(function(err, info) {
+//       console.log(info);
+//       console.log('success',info.success);
+//       console.log('funds',info.return.funds);
 //     });
-
-// Trade API method call.
-    btceTrade.getInfo(function(err, info) {
-      console.log(info);
-      console.log('success',info.success);
-      console.log('funds',info.return.funds);
-    });
 
     let sampleDate = (new Date()).toString();
     let data = {

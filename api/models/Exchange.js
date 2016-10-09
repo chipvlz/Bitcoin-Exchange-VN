@@ -14,6 +14,9 @@ module.exports = {
     item: {
       type: 'string'
     },
+    quantity: {
+      type: 'string'
+    },
     price: {
       type: 'string'
     },

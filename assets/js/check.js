@@ -52,13 +52,16 @@ $(function() {
 
     $('#quantity_sell').keyup(function(){
       var quantity_sell = $('#quantity_sell').val();
-      var price_sell = $('span#btc-price-sell').text();
+      var price_sell = $('input#giaban').val();
       if (parseFloat(quantity_sell) >= 0.01 ) {
         $('input[name=quantity_sell]').css({'border':'1px solid #468847',
           'color':'#468847'
         });
         $('input[name=money_recieve]').css({'color':'#468847'});
-        $('input[name=money_recieve]').val((parseFloat(quantity_sell) * parseFloat(price_sell)).toFixed(2));
+        var price_count = (parseFloat(quantity_sell) * parseFloat(price_sell)).toFixed(2);
+        var count_done = price_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        $('input[name=money_recieve]').val(count_done);
+
       } else {
         $('input[name=quantity_sell]').css({'border':'1px solid #a90000',
           'color':'#a90000'

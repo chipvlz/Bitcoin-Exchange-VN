@@ -17,9 +17,22 @@ module.exports = {
       req.session.user = result; // store hết user data vào object user trong session
 
       let session_id = req.signedCookies['sails.sid'];
+
+      if (req.session.user.group = 'Admin') {
+        var adminLogin = req.session.user.group;
+        sails.log.info('admin is online');
+        sails.sockets.join(req, adminLogin ,function(err){
+          if (err) {
+            sails.log.warned('chưa join được')
+          }
+          return sails.log.info('đã join vào room admin')
+        });
+      }
       sails.sockets.join(req, 'logged'); // Đưa user vừa đăng nhập vào room Logged
       sails.sockets.join(req, session_id); // Đưa user vừa đăng nhập vào room của chính bản thân user
       sails.sockets.broadcast(session_id, 'user/login-success', { message: "đăng nhập thành công", all_session_data: req.session});
+
+
 
       delete result.password;
       res.json(200, {result});
@@ -52,6 +65,7 @@ module.exports = {
           if (err) { return res.serverError(err); }
           sails.sockets.join(req, params.email);
           sails.sockets.broadcast(params.email,'user/registered');
+          sails.sockets.broadcast('Admin','test/test',{msg:'test'});
           return res.ok();
         })
       }

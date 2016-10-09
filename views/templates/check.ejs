@@ -29,7 +29,7 @@
 
         <tr>
           <td>Số tiền nhận</td>
-          <td><%= foundBill.price %></td>
+          <td><%= foundBill.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> VNĐ</td>
         </tr>
 
         <tr>
@@ -38,6 +38,15 @@
         </tr>
         </tbody>
       </table>
+    </div>
+    <div class="panel-footer">
+
+
+      <blockquote>
+        <h4><p>Hãy lưu <kbd>mã giao dịch</kbd> của bạn ở 1 nơi an toàn</p></h4>
+        <p>Giao dịch của bạn sẽ được xử lý trong thời gian nhanh nhất , nếu sau 15 phút mà bạn chưa nhận được giao dịch thành công vui lòng liên hệ với Admin .</p>
+        <footer>Khánh Trần</footer>
+      </blockquote>
     </div>
   </div>
 

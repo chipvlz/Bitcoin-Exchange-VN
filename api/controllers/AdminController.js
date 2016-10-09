@@ -8,11 +8,9 @@
 var QueryBuilder = require('datatable');
 
 module.exports = {
+
   index: (req,res) => {
-
-
     let data = {
-
       userName: 'Khanh Admin',
       testVariable: 'this is test value'
     };
@@ -20,12 +18,11 @@ module.exports = {
   },
   userid: (req,res) => {
     let params = req.allParams();
-
     User.findOne({'id':params.id}).exec(function(err,userdata){
       res.view('admin/user-info',{userdata});
     })
   },
-  
+
   userdel: (req,res) => {
     let params = req.allParams();
     console.log("check params:",params);
@@ -36,12 +33,7 @@ module.exports = {
       sails.log('xóa thành công : '+params.id);
       return res.redirect('admin/user');
     });
-  },
-
-  addmatch: (req,res) => {
-    return res.view("match/add")
   }
-
 
 };
 

@@ -57,6 +57,7 @@ module.exports = {
         sails.sockets.join(req, params.excode);
         sails.sockets.broadcast(params.excode,'sell/pending',{send_code:newcode});
 
+        sails.sockets.blast('add/exchange',done);
       })
     });
 
@@ -70,6 +71,23 @@ module.exports = {
       sails.log('found',foundBill);
       return res.view('templates/check',{foundBill})
     });
+  },
+
+  manager: (req,res) => {
+    sails.log.info('who is login ?',req.session.user.group);
+    Exchange.find(function(err,allExchange) {
+      if (err) {
+        return res.negotiate(err)
+      }
+      res.view('admin/ex_manager',{allExchange});
+    });
+  },
+
+  action: (req,res) => {
+    let magiaodich = req.params.i;
+    Exchange.findOne({code:magiaodich}).exec(function(err,result) {
+      return res.view('admin/process',result);
+    })
   }
 };
 

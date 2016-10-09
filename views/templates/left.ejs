@@ -3,7 +3,9 @@
   <ul class="list-group">
     <% _.each(foundItem, function(item) { %>
     <a href="/sell/<%= item.link %>"><li class="list-group-item sell-<%= item.link %>-active">
-        <img src="/images/<%= item.link %>.ico"> <%= item.name %> <span class="badge" id="<%= item.link %>-price-sell"><%= item.price_sell %></span></li>
+        <img src="/images/<%= item.link %>.ico"> <%= item.name %>
+        <input type="text" class="sr-only" id="giaban" value="<%= item.price_sell %>">
+        <span class="badge" id="<%= item.link %>-price-sell"><%= item.price_sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></span></li>
     </a>
     <% }) %>
   </ul>

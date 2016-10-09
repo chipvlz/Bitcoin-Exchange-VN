@@ -1,0 +1,72 @@
+<%- partial ('../common/admin_nav.ejs') %>
+
+<div class="container">
+  <h2>Danh sách giao dịch</h2>
+  <p>xử lý các giao dịch theo 3 trạng thái:</p>
+  <table class="table table-bordered" id="manage_exchange">
+    <thead>
+    <tr>
+      <th>Mã GD</th>
+      <th>Tên tài khoản</th>
+      <th>Số tài khoản</th>
+      <th>Loại GD</th>
+      <th>Loại tiền ảo</th>
+      <th>Số lượng</th>
+      <th>Giá GD</th>
+      <th>Trạng thái</th>
+      <th>Xử lý</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(allExchange, function(exchange) { %>
+    <tr>
+      <td class="ex_code"><%= exchange.code %></td>
+      <td class="ex_name"><%= exchange.name %></td>
+      <td class="ex_number"><%= exchange.number %></td>
+      <td class="ex_ex"><%= exchange.ex %></td>
+      <td class="ex_item"><%= exchange.item %></td>
+      <td class="ex_quantity"><%= exchange.quantity %></td>
+      <td class="ex_price"><%= exchange.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></td>
+      <td class="ex_status"><%= exchange.status %></td>
+      <td class="ex_submit"><a href="/admin/exchange/action/<%= exchange.code %>">Xử lý GD</a></td>
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="exchangeModal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Thực Hiện Giao Dịch</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Hình Thức:</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Password:</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đồng Ý</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- partial ('../common/footer.ejs') %>

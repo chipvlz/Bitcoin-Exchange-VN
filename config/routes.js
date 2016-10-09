@@ -44,7 +44,8 @@ module.exports.routes = {
   '/admin/user/:id': 'AdminController.userid',
   '/admin/user/del/:id': 'AdminController.userdel',
   '/view/user/:id':'UserController.userid',
-  '/admin/match/add':'AdminController.addmatch',
+  '/admin/exchange':'ExchangeController.manager',
+  '/admin/exchange/action/:i':'ExchangeController.action',
 
   // EXCHANGE FUNCTION
   '/sell/:i': 'ExchangeController.sell',
