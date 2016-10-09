@@ -20,20 +20,26 @@ module.exports = {
 //     });
 
     let sampleDate = (new Date()).toString();
-    let data = {
-      currentDate: sampleDate,
-      textAdmin: 'Khánh Trần',
-      textDesc: '',
-      textVersion: '1.0.1',
-      title:'Bán Bitcoin',
-      txt:'BTC',
-      sell:'no'
-    };
 
-    Item.find(function(err,foundItem){
-      data.foundItem = foundItem;
-      return res.view("homepage",data);
+    Item.findOne({name:'Bitcoin'}).exec(function(err,foundOne) {
+      if (err) {
+        return res.negotiate(err)
+      }
+      let data = {
+        currentDate: sampleDate,
+        name: foundOne.name,
+        price_sell: foundOne.price_sell,
+        price_buy: foundOne.price_buy,
+        link: foundOne.link,
+        icon: foundOne.icon
+      };
+      Item.find(function(err,foundItem){
+        data.foundItem = foundItem;
+        return res.view("homepage",data);
+      });
     });
+
+
 
 
   }
