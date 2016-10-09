@@ -2,18 +2,17 @@
 
 <!--BÁN BITCOIN-->
 <div class="col-sm-8 tab-pane in active" id="ban_bitcoin">
-  <h4><%= title %></h4>
   <div class="panel panel-warning">
     <div class="panel-heading">Giao dịch tự động trong vòng 5s qua Vietcombank 24/7
       (kể cả ban đêm & cuối tuần)</div>
     <div class="panel-body">
-      <form class="form-horizontal" id="form_ban_bitcoin">
+      <form class="form-horizontal" id="form_sell">
         <div class="form-group">
-          <label class="control-label col-sm-4" for="btc_sell">Số lượng <%= txt %>:</label>
+          <label class="control-label col-sm-4" for="btc_sell">Số lượng <%= name %>:</label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input id="btc_sell" autocomplete="off"  name="btc_sell" id="btc" placeholder="e.g.: 10" class="blue_ form-control"  type="text">
-              <div class="input-group-addon blue_"><%= txt %></div>
+              <input id="quantity_sell" autocomplete="off"  name="quantity_sell" id="quantity_sell" placeholder="tối thiểu là 0.01" class="blue_ form-control"  type="text">
+              <div class="input-group-addon blue_"><%= name %></div>
             </div>
           </div>
         </div>
@@ -44,10 +43,12 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-4" for="money_buy">Số tiền nhận:</label>
+          <label class="control-label col-sm-4" for="money_recieve">Số tiền nhận:</label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input id="tiennhan" readonly="" name="money_buy" placeholder="0" class="form-control"  type="text"><div class="input-group-addon border">VNĐ</div>
+              <input id="tiennhan" readonly="" name="money_recieve" placeholder="0" class="form-control"  type="text">
+              <input type="text" name="item_sell" class="sr-only" value="<%= name %>">
+              <div class="input-group-addon border">VNĐ</div>
             </div>
           </div>
         </div>
@@ -59,9 +60,10 @@
             </div>
           </div>
         </div>
+        <div class="panel-footer"><input type="submit" class="btn btn-warning" value="Tiếp Tục"></div>
       </form>
     </div>
-    <div class="panel-footer"><input type="submit" class="btn btn-warning" value="Tiếp Tục"></div>
+
   </div>
 </div>
 <!--END BÁN BITCOIN-->

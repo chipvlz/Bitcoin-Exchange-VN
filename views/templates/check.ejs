@@ -1,0 +1,55 @@
+<%- partial ('../common/navbar.ejs') %>
+
+<div class="container">
+  <div class="panel panel-warning">
+    <div class="panel-heading">Kiểm Tra Giao Dịch</div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+
+        <tbody>
+        <tr>
+          <td>Loại giao dịch</td>
+          <td><%= foundBill.ex %> <%= foundBill.item %></td>
+        </tr>
+
+        <tr>
+          <td>Mã giao dịch</td>
+          <td><%= foundBill.code %></td>
+        </tr>
+
+        <tr>
+          <td>Số tài khoản </td>
+          <td><%= foundBill.number %></td>
+        </tr>
+
+        <tr>
+          <td>Tên người nhận</td>
+          <td><%= foundBill.name %></td>
+        </tr>
+
+        <tr>
+          <td>Số tiền nhận</td>
+          <td><%= foundBill.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> VNĐ</td>
+        </tr>
+
+        <tr>
+          <td>Trạng Thái</td>
+          <td><%= foundBill.status %></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+
+
+      <blockquote>
+        <h4><p>Hãy lưu <kbd>mã giao dịch</kbd> của bạn ở 1 nơi an toàn</p></h4>
+        <p>Giao dịch của bạn sẽ được xử lý trong thời gian nhanh nhất , nếu sau 15 phút mà bạn chưa nhận được giao dịch thành công vui lòng liên hệ với Admin .</p>
+        <footer>Khánh Trần</footer>
+      </blockquote>
+    </div>
+  </div>
+
+</div>
+
+<%- partial ('../common/footer.ejs') %>

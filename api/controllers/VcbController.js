@@ -18,13 +18,13 @@ module.exports = {
 
       if (!found) {
         request.get({
-          url: 'xxxxxxx/'+params.number_vcb
+          url: 'https://santienao.com/api/v1/bank_accounts/'+params.number_vcb
         },function(error,response,body){
           if(error) {
             sails.log.error(error);
           } else {
             var data = JSON.parse(body);
-            sails.log(data.account_name);
+            sails.log.warn(data.account_name+' - '+data.account_number+' đang mở giao dịch');
             sails.sockets.join(req, params.number_vcb); // Đưa user vừa đăng nhập vào room của chính bản thân user
             sails.sockets.broadcast(params.number_vcb, 'vcb_number/check',{msg:data.account_name});
 
