@@ -18,9 +18,9 @@ module.exports = {
     Item.find(function(err,foundItem){
       data.foundItem = foundItem;
         Item.findOne({link:params.i}).exec(function(err,findType){
-          data.sell = findType.price_sell;
-          data.title = findType.name;
-          data.txt = findType.icon;
+          data.price_sell = findType.price_sell;
+          data.name = findType.name;
+          data.icon = findType.icon;
           return res.view("homepage",data)
         })
     })
@@ -53,10 +53,9 @@ module.exports = {
         if (err) {
           return res.negotiate(err);
         }
-        sails.log('data giao dịch',done);
+        sails.log('giao dịch mới tạo : ',done);
         sails.sockets.join(req, params.excode);
         sails.sockets.broadcast(params.excode,'sell/pending',{send_code:newcode});
-
         sails.sockets.blast('add/exchange',done);
       })
     });
@@ -65,10 +64,7 @@ module.exports = {
 
   view: (req,res) => {
     let params = req.allParams();
-    sails.log(params.i);
-
     Exchange.findOne({code:params.i}).exec(function(err,foundBill){
-      sails.log('found',foundBill);
       return res.view('templates/check',{foundBill})
     });
   },
@@ -109,7 +105,7 @@ module.exports = {
         return res.negotiate(err)
       }
       sails.sockets.join();
-      sails.socket.broadcast('','',{}) 
+      sails.socket.broadcast('','',{})
     })
   }
 };
