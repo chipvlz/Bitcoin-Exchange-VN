@@ -32,8 +32,8 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  '/': 'HomepageController.index',
-  '/trangchu': 'HomepageController.index',
+  '/': 'IndexController.index',
+  '/trangchu': 'IndexController.index',
 
   '/register': 'LoginController.register',
   '/logout': 'UserController.logout',
