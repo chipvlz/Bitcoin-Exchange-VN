@@ -166,7 +166,22 @@ blockquote {
 
   border-left:5px solid #a94442;
 }
+.panel-review {
+  padding:10px;
+}
 
+.panel-review p {
+  margin-bottom: 3px;
+}
+span.comment-date {
+  color:#939393;
+}
+span.review-cm {
+  color:#636363;
+}
 kbd {
   background:#a94442;
+}
+hr {
+   margin:0;
 }

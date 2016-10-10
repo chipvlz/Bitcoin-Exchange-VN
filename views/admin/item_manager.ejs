@@ -1,0 +1,32 @@
+<%- partial ('../common/admin_nav.ejs') %>
+
+<div class="container">
+  <h2>Danh sách Item</h2>
+
+  <table class="table table-bordered" id="manage_exchange">
+    <thead>
+    <tr>
+      <th>Tên Item</th>
+      <th>Giá mua</th>
+      <th>Giá bán</th>
+      <th>Icon</th>
+      <th>Link</th>
+      <th>Xử lý</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(allItem, function(item) { %>
+    <tr>
+      <td class="item_name"><%= item.name %></td>
+      <td class="item_price_buy"><%= item.price_buy %></td>
+      <td class="item_price_sell"><%= item.price_sell %></td>
+      <td class="item_icon"><%= item.icon %></td>
+      <td class="item_link"><%= item.link %></td>
+      <td class="item_submit"><a href="/admin/item/action/<%= item.link %>">Sửa Item</a></td>
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- partial ('../common/footer.ejs') %>

@@ -10,19 +10,41 @@ module.exports = {
 
 	sell: (req,res) => {
     let data = {
-      version: '1.0.0'
+      text: 'Bán'
     };
     let params = req.allParams();
-    sails.log.info(params);
 
-    Item.find(function(err,foundItem){
-      data.foundItem = foundItem;
+    Item.find({sell:1}).exec(function(err,foundItemsell) {
+      data.foundItemsell = foundItemsell;
+      Item.find({buy:1}).exec(function(err,foundItembuy) {
+        data.foundItembuy = foundItembuy;
         Item.findOne({link:params.i}).exec(function(err,findType){
           data.price_sell = findType.price_sell;
           data.name = findType.name;
           data.icon = findType.icon;
           return res.view("homepage",data)
         })
+      })
+    })
+  },
+
+  buy: (req,res) => {
+    let data = {
+      text: 'Mua'
+    };
+    let params = req.allParams();
+
+    Item.find({buy:1}).exec(function(err,foundItembuy) {
+      data.foundItembuy = foundItembuy;
+      Item.find({sell:1}).exec(function(err,foundItemsell) {
+        data.foundItemsell = foundItemsell;
+        Item.findOne({link:params.i}).exec(function(err,findType){
+          data.price_buy = findType.price_buy;
+          data.name = findType.name;
+          data.icon = findType.icon;
+          return res.view("homepage",data)
+        })
+      })
     })
   },
 
@@ -86,27 +108,5 @@ module.exports = {
     })
   },
 
-  item_manager : (req,res) => {
-    Item.find(function(err,data){
-      if (err) {
-        return res.negotiate(err)
-      }
-      return res.view('admin/item_manager',data)
-    });
-  },
-
-  item_add: (req,res) => {
-    if (!req.isSocket) {
-      return res.badRequest()
-    }
-    let params = req.allParams();
-    Item.create({params}).exec(function(err,result){
-      if (err) {
-        return res.negotiate(err)
-      }
-      sails.sockets.join();
-      sails.socket.broadcast('','',{})
-    })
-  }
 };
 

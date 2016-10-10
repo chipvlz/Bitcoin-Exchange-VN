@@ -29,6 +29,9 @@ module.exports = {
     number: {
       type: 'string'
     },
+    address: {
+      type: 'string'
+    },
     status:{
       type: 'string'
     }

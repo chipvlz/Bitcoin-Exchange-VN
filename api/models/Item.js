@@ -22,6 +22,12 @@ module.exports = {
     },
     link: {
       type: 'string'
+    },
+    buy: {
+      type: 'integer'
+    },
+    sell: {
+      type: 'integer'
     }
   }
 };

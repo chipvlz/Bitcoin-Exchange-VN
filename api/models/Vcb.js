@@ -14,7 +14,7 @@ module.exports = {
     account_name: {
       type: 'string'
     },
-    back_name: {
+    bank_name: {
       type: 'string'
     },
     state: {

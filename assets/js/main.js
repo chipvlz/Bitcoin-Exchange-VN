@@ -118,16 +118,10 @@ $(function() {
     console.log("admin/userdel?id="+searchIDs);
     socket.get("/admin/userdel?id="+searchIDs)
   });
-  //END USER MANAGEMENT
+  // END USER MANAGEMENT
 
-  var check_active = $('#mua_ban .title_item').text();
-  if (check_active == 'Bitcoin') {
-    $('li.sell-btc-active').addClass('active');
-  } else if ( check_active == 'Btc-e') {
-    $('li.sell-btce-active').addClass('active');
-  } else {
-    $('li.sell-pm-active').addClass('active');
-  }
+
+
 });
 
 

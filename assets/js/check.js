@@ -69,22 +69,29 @@ $(function() {
         $('input[name=money_recieve]').css({'color':'#a90000'});
         $('input[name=money_recieve]').val('Số lượng tối thiểu là 0.01 BTC')
       }
-
-
     });
-    // $('#number_sell').keyup(function(){
-    //   var number_sell = jQuery('#number_sell').val();
-    //   if (parseFloat(number_sell) > 0,01 ){
-    //     jQuery('label.blue_2').css({'color':'#468847'});
-    //     jQuery('input.blue_2').css({'border':'1px solid #468847'});
-    //     jQuery('.input-group-addon.blue_2').css({'border':'1px solid #468847',
-    //       'background':'#dff0d8',
-    //       'color':'#468847'
-    //     });
-    //   }
-    //   jQuery('#money_tra').val(parseFloat(number_sell) * parseFloat(<?php echo $sell_bitcoin?>));
-    // });
-
-
   });
+
+  // CHECK LINK ACTIVE
+  $(function() {
+    var pgurl = window.location.href.substr(window.location.href.indexOf('/')+16);
+    $("#mua_ban a").each(function(){
+      if($(this).attr("href") == pgurl || $(this).attr("href") == '' )
+        $(this).find('li.exchange-active').addClass('active');
+    })
+  });
+
+  var getLink = window.location.href.substr().split("/");
+  if (getLink[3]=='sell') {
+    $('div#page_sell').addClass("in active");
+    $('div#page_buy').removeClass("in active");
+    $('div#page_buy').addClass("fade");
+
+  } else {
+    $('div#page_buy').addClass("in active");
+    $('div#page_sell').removeClass("in active");
+    $('div#page_sell').addClass("fade");
+  }
+  // END CHECK
+  
 });
