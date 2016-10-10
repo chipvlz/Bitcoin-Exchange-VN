@@ -1,5 +1,9 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
 /* Main Page */
+html, body {
+  height: 100%;
+}
+
 body {
   letter-spacing: 0.5px;
 }
