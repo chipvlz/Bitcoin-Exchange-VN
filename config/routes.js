@@ -59,6 +59,9 @@ module.exports.routes = {
   },
   '/get': {
     view: 'common/result'
+  },
+  '/about': {
+    view: 'about'
   }
 
   /***************************************************************************
