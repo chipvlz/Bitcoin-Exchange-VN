@@ -1,5 +1,9 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
 /* Main Page */
+html, body {
+  height: 100%;
+}
+
 body {
   letter-spacing: 0.5px;
 }
@@ -15,9 +19,9 @@ li.list-group-item:hover {
   background:#616161;
   color:#fff;
 }
-.list-group-item > .badge {
-  background: #fcf8e3;
-  color:#08c;
+.list-group-item:hover .badge ,.list-group-item.active .badge{
+  background: #f5e1ca;
+  color:#4b8c95;
 }
 /* Top Page */
 .navbar {
@@ -28,6 +32,8 @@ li.list-group-item:hover {
   border:none !important;
 }
 .jumbotron {
+  margin-top:-10px;
+  min-height:200px;
   background:#4b8c95;
   color:#f5e1ca !important;
 }
@@ -45,10 +51,10 @@ li.list-group-item:hover {
 }
  /*Left Side */
 .sidenav {
-  background-color: #ecf0f1;
+  background-color: #d9edf7;
 }
 .sidenav h4 {
-  color:#5a5a5a;
+  color:#222;
   font-weight: 200;
 }
 span.title_ban {
@@ -153,12 +159,7 @@ table#manage_exchange th {
   font-weight: 200;
   letter-spacing: 0.8px;
 }
-/* Add a gray background color and some padding to the footer */
-footer {
-  margin-top:20px;
-  background-color: #f2f2f2;
-  padding: 25px;
-}
+
 .panel-footer {
   background: #fff;
 }
@@ -166,7 +167,37 @@ blockquote {
 
   border-left:5px solid #a94442;
 }
+.panel-review {
+  padding:10px;
+}
 
+.panel-review p {
+  margin-bottom: 3px;
+}
+span.comment-date {
+  color:#939393;
+}
+span.review-cm {
+  color:#636363;
+}
 kbd {
   background:#a94442;
+}
+hr {
+   margin:0;
+}
+.contact-page {
+  margin-top:50px;
+}
+
+.list-group-item.active, li.list-group-item.exchange-active:hover, .list-group-item.active:focus {
+  background:#4b8c95;
+  border:1px solid #4b8c95;
+  color:#f5e1ca;
+}
+/* Add a gray background color and some padding to the footer */
+footer {
+  padding:15px;
+  background-color: #222;
+  color:#f5e1ca;
 }

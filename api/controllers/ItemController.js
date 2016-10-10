@@ -7,11 +7,11 @@
 
 module.exports = {
 	index: (req,res) => {
-    Item.find(function(err,data) {
+    Item.find(function(err,allItem) {
       if (err) {
         return res.negotiate(err)
       }
-      return res.view('admin/item_manager',data)
+      return res.view('admin/item_manager',{allItem})
     })
   },
 

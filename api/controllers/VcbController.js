@@ -15,7 +15,6 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-
       if (!found) {
         request.get({
           url: 'xxxxxx/'+params.number_vcb
@@ -41,7 +40,7 @@ module.exports = {
           }
         })
       } else {
-        sails.sockets.join(req, params.number_vcb); // Đưa user vừa đăng nhập vào room của chính bản thân user
+        sails.sockets.join(req, params.number_vcb);
         sails.sockets.broadcast(params.number_vcb, 'vcb_number/check',{msg:found.account_name});
       }
     });

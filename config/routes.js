@@ -50,6 +50,7 @@ module.exports.routes = {
 
   // EXCHANGE FUNCTION
   '/sell/:i': 'ExchangeController.sell',
+  '/buy/:i': 'ExchangeController.buy',
   '/checkbill/:i': 'ExchangeController.view',
   // END FUNCTION
 
@@ -58,6 +59,9 @@ module.exports.routes = {
   },
   '/get': {
     view: 'common/result'
+  },
+  '/about': {
+    view: 'about'
   }
 
   /***************************************************************************
