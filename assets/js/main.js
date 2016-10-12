@@ -1,7 +1,10 @@
+
 $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
+  // Let's check if the browser supports notifications
+  
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server
   // UserController sẽ xử lý phần tiếp theo
@@ -89,22 +92,6 @@ $(function() {
 
   socket.on('sell/pending', function(data) {
     window.location = '/checkbill/'+data.send_code;
-  });
-
-  socket.on('add/exchange',function(data){
-    $('table#manage_exchange tbody').append('' +
-      '<tr class="new_exchange"><td class="ex_code">'+data.code+'</td>' +
-      '<td class="ex_name">'+data.name+'</td>' +
-      '<td class="ex_number">'+data.number+'</td>' +
-      '<td class="ex_ex">'+data.ex+'</td>' +
-      '<td class="ex_item">'+data.item+'</td>' +
-      '<td class="ex_quantity">'+data.quantity+'</td>' +
-      '<td class="ex_price">'+data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +'</td>' +
-      '<td class="ex_status">'+data.status+'</td>' +
-      '<td class="ex_action">Xử lý</td></tr>');
-
-    $('table#manage_exchange tbody tr.new_exchange').hide().delay(100).fadeIn(500);
-    $('table#manage_exchange tbody tr.new_exchange').css('background','#fdf59a');
   });
 
   // xử lý xong
