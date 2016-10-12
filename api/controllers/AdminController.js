@@ -33,7 +33,30 @@ module.exports = {
       sails.log('xóa thành công : '+params.id);
       return res.redirect('admin/user');
     });
+  },
+
+  setting: (req,res) => {
+    Setting.findOne({id:1}).exec(function(err,data){
+      return res.view('admin/setting',{data})
+    })
+  },
+
+  setmoney: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest()
+    }
+    let params = req.allParams();
+    Setting.update({id:params.id},
+      { money:params.money,
+        bitcoin:params.bitcoin
+      }).exec(function(err,result) {
+      if (err) {
+        return res.negotiate
+      }
+      return res.redirect('/admin/setting')
+    })
   }
+
 
 };
 

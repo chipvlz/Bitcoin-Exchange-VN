@@ -65,7 +65,6 @@ module.exports = {
           if (err) { return res.serverError(err); }
           sails.sockets.join(req, params.email);
           sails.sockets.broadcast(params.email,'user/registered');
-          sails.sockets.broadcast('Admin','test/test',{msg:'test'});
           return res.ok();
         })
       }
@@ -74,7 +73,6 @@ module.exports = {
   },
   allusers: (req, res) => {
     User.find(function (err, users) {
-
       res.view('admin/users',{users})
     })
   },
@@ -87,9 +85,7 @@ module.exports = {
       var edit = 'no'
     }
     User.findOne({'id':params.id}).exec(function(err,userdata){
-
       res.view('user/info',{userdata,edit});
-
     })
   }
 };

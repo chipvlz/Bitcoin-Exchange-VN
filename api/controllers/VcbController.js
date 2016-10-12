@@ -17,7 +17,7 @@ module.exports = {
       }
       if (!found) {
         request.get({
-          url: 'xxxxxx/'+params.number_vcb
+          url: 'https://santienao.com/api/v1/bank_accounts/'+params.number_vcb
         },function(error,response,body){
           if(error) {
             sails.log.error(error);
@@ -44,6 +44,50 @@ module.exports = {
         sails.sockets.broadcast(params.number_vcb, 'vcb_number/check',{msg:found.account_name});
       }
     });
+  },
+
+  test: (req,res) => {
+    // var vcbCookie =
+    //
+
+    // var cookie = {
+    //   "domain": "www.vietcombank.com.vn",
+    //   "hostOnly": true,
+    //   "httpOnly": true,
+    //   "name": "__RequestVerificationToken_L0lCYW5raW5nMjAxNQ2",
+    //   "path": "/",
+    //   "sameSite": "no_restriction",
+    //   "secure": false,
+    //   "session": true,
+    //   "storeId": "0",
+    //   "value": "OBC6ZgxYNSYjEm18WEeel-vkDfczkOFJKG6djAGgXPcQd7eYTtDOoIDjViMQE1gL5Af8McenbU_x51GRa4wbwQ0mPkoWfVdTCI9Y21wR-jU1",
+    //   "id": 2
+    // };
+    // request.get(
+    //   'https://www.vietcombank.com.vn', cookies=cookie,
+    //   function (error, response, body) {
+    //     if (!error && response.statusCode == 200) {
+    //       console.log(body)
+    //     }
+    //   }
+    // );
+    console.log('begin...');
+    // var j = request.jar();
+    // var cookie = request.cookie('value=OBC6ZgxYNSYjEm18WEeel-vkDfczkOFJKG6djAGgXPcQd7eYTtDOoIDjViMQE1gL5Af8McenbU_x51GRa4wbwQ0mPkoWfVdTCI9Y21wR-jU1');
+    var url = 'www.vietcombank.com.vn';
+    // j.setCookie(cookie, url);
+    request.get({url:url}, function (e,r,body) {
+      if (e) {
+        console.log('error',e)
+      }
+      else {
+
+        console.log('ok',body)
+      }
+    })
+
+
   }
+
 };
 

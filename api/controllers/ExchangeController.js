@@ -6,8 +6,7 @@
  */
 
 module.exports = {
-
-
+  
 	sell: (req,res) => {
     let data = {
       text: 'Bán'
