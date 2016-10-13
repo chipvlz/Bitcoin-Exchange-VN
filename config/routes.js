@@ -34,18 +34,20 @@ module.exports.routes = {
 
   '/': 'IndexController.index',
   '/trangchu': 'IndexController.index',
+  '/test': 'VcbController.test',
 
   '/register': 'LoginController.register',
   '/logout': 'UserController.logout',
 
   '/admin': 'AdminController.index', //trang chủ admin
-
+  '/admin/setting': 'AdminController.setting',
   '/admin/user': 'UserController.allusers',
   '/admin/user/:id': 'AdminController.userid',
   '/admin/user/del/:id': 'AdminController.userdel',
   '/view/user/:id':'UserController.userid',
   '/admin/exchange':'ExchangeController.manager',
-  '/admin/exchange/action/:i':'ExchangeController.action',
+  '/admin/exchange/delete/:code':'ExchangeController.delete',
+  '/admin/exchange/process/:code':'ExchangeController.process',
   '/admin/item': 'ItemController.index',
 
   // EXCHANGE FUNCTION

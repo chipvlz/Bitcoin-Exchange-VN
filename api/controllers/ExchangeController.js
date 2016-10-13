@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  
+
 	sell: (req,res) => {
     let data = {
       text: 'Bán'
@@ -21,6 +21,7 @@ module.exports = {
           data.price_sell = findType.price_sell;
           data.name = findType.name;
           data.icon = findType.icon;
+          data.link = findType.link;
           return res.view("homepage",data)
         })
       })
@@ -41,6 +42,7 @@ module.exports = {
           data.price_buy = findType.price_buy;
           data.name = findType.name;
           data.icon = findType.icon;
+          data.link = findType.link;
           return res.view("homepage",data)
         })
       })
@@ -69,7 +71,7 @@ module.exports = {
         code: newcode,
         name: params.name_vcb,
         number: params.number_vcb,
-        status: 'Pending'
+        status: 'Đang xử lý'
       }).exec(function(err,done) {
         if (err) {
           return res.negotiate(err);
@@ -100,12 +102,19 @@ module.exports = {
     });
   },
 
-  action: (req,res) => {
-    let magiaodich = req.params.i;
+  process: (req,res) => {
+    let magiaodich = req.params.code;
     Exchange.findOne({code:magiaodich}).exec(function(err,result) {
-      return res.view('admin/process',result);
+      return res.view('admin/process',{result});
     })
   },
+
+  delete: (req,res) => {
+    let magiaodich = req.params.code;
+    Exchange.destroy({code:magiaodich}).exec(function(err,result) {
+      return res.redirect('/admin/exchange')
+    })
+  }
 
 };
 

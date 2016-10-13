@@ -1,5 +1,41 @@
 <%- partial ('../common/admin_nav.ejs') %>
 
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">THANH TOÁN GIAO DỊCH CHO KHÁCH</div>
+    <div class="panel-body">
+      <table class="table table-bordered">
 
+        <tbody>
+        <tr>
+          <td>Loại giao dịch</td>
+          <td>Khách <%= result.ex %> <%= result.item %></td>
+        </tr>
+
+        <tr>
+          <td>Mã giao dịch</td>
+          <td><%= result.code %></td>
+        </tr>
+
+        <tr>
+          <td>Số tiền khách nhận</td>
+          <td><%= result.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> VNĐ</td>
+        </tr>
+
+        <tr>
+          <td>Trạng Thái</td>
+          <td><%= result.status %></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+
+      <button type="button" class="btn btn-primary">Thanh toán</button>
+
+    </div>
+  </div>
+
+</div>
 
 <%- partial ('../common/footer.ejs') %>

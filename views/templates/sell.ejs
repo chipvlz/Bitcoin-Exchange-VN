@@ -11,7 +11,7 @@
           <label class="control-label col-sm-4" for="btc_sell">Số lượng <%= name %>:</label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input id="quantity_sell" autocomplete="off"  name="quantity_sell" id="quantity_sell" placeholder="tối thiểu là 0.01" class="blue_ form-control"  type="text">
+              <input autocomplete="off"  name="quantity_sell" id="quantity_sell" placeholder="tối thiểu là 0.01" class="blue_ form-control"  type="text" required>
               <div class="input-group-addon blue_"><%= name %></div>
             </div>
           </div>
@@ -26,7 +26,7 @@
           <label class="col-md-4 control-label">Số tài khoản</label>
           <div class="col-md-8">
             <div class="input-group">
-              <input type="text" class="form-control" name="number_vcb" id="number_vcb" value="" placeholder="">
+              <input type="text" class="form-control" name="number_vcb" id="number_vcb" value="" placeholder="" required>
               <div id="check_" class="input-group-addon border">
                 <i id="icon_put" class="fa fa-credit-card-alt" aria-hidden="true"></i>
                 <i id="icon_load" class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
@@ -56,7 +56,7 @@
           <label class="control-label col-sm-4" for="name_vcb">Chúng tôi còn:</label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input readonly="" name="" id="bqt" value="" placeholder="300,000,000" class="form-control"  type="text"><div class="input-group-addon border">VNĐ</div>
+              <input readonly="" name="" id="bqt" value="" placeholder="" class="form-control"  type="text"><div class="input-group-addon border">VNĐ</div>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
           </div>
         </div>
 
-        <div class="panel-footer"><input type="submit" class="btn btn-warning" value="Tiếp Tục"></div>
+        <div class="panel-footer"><input type="submit" name="sell_submit" class="btn btn-warning" value="Tiếp Tục"></div>
       </form>
     </div>
 

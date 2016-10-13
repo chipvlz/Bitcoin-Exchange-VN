@@ -38,10 +38,9 @@ var jsFilesToInject = [
 
   'js/bootstrap.min.js',
   'js/main.js',
-  'js/bootstrap.editable.min.js',
   '/ckeditor/ckeditor.js',
   'js/check.js',
-  'js/**/*.js'
+  'js/bootstrap-editable.min.js'
   // 'ckeditor/config.js'
 ];
 

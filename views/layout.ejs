@@ -74,7 +74,11 @@
     <script src="/ckeditor/ckeditor.js"></script>
     <script src="/js/check.js"></script>
     <script src="/js/bootstrap-editable.min.js"></script>
-    <script src="/js/jquery.timeago.js"></script>
     <!--SCRIPTS END-->
+    <% if(req.session.user_id && req.session.user.group == 'Admin') { %>
+      <script src="/js/admin/admin.js"></script>
+    <% } %>
+
   </body>
 </html>
+

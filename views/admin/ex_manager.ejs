@@ -28,7 +28,10 @@
       <td class="ex_quantity"><%= exchange.quantity %></td>
       <td class="ex_price"><%= exchange.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></td>
       <td class="ex_status"><%= exchange.status %></td>
-      <td class="ex_submit"><a href="/admin/exchange/action/<%= exchange.code %>">Xử lý GD</a></td>
+      <td class="ex_submit">
+        <a href="/admin/exchange/process/<%= exchange.code %>"><i class="fa fa-bank fa-lg" aria-hidden="true"></i></a>
+        <a href="/admin/exchange/delete/<%= exchange.code %>"><i class="fa fa-remove fa-lg" aria-hidden="true"></i></a>
+      </td>
     </tr>
     <% }) %>
     </tbody>

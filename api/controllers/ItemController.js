@@ -19,13 +19,15 @@ module.exports = {
     if (!req.isSocket) {
       return res.badRequest()
     }
-    let params = req.allParams;
-    Item.create({params}).exec(function(err,result) {
+    let params = req.allParams();
+        params.buy = 1;
+        params.sell = 1;
+    Item.create(params).exec(function(err,newitem) {
       if (err) {
         return res.negotiate(err)
       }
-      sails.sockets.join('','');
-      sails.socket.broadcast('','',{result})
+      console.log('new item',newitem);
+      sails.sockets.blast('add/item',newitem)
     })
   }
 };

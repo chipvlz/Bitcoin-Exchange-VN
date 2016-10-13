@@ -12,6 +12,7 @@ $(function() {
       $('#icon_done').hide();
       $('#icon_load').hide();
       $('#icon_close').hide();
+      $('input[name=sell_submit]').addClass('disabled')
       if ($('#number_vcb').val().length == 13) {
         $('#icon_load').show();
         $('#icon_done').hide();
@@ -30,6 +31,7 @@ $(function() {
     socket.on('vcb_number/check',function(data){
       if (data.msg == null) {
         getname_vcb(number);
+        $('input[name=sell_submit]').addClass('disabled')
       } else {
         $('#icon_load').hide();
         $('#icon_done').show();
@@ -40,20 +42,41 @@ $(function() {
           $('input#name_vcb').val('Tài khoản không tồn tại');
           $('input#number_vcb').css({'border':'1px solid #a94442'});
           $('input#number_vcb').css({'color':'#a94442'});
+          $('input[name=sell_submit]').addClass('disabled')
         } else {
           $('#name_vcb').val(data.msg);
           $('label.blue').css({'color':'#468847'});
           $('input#number_vcb').css({'border':'1px solid #3f8040'});
           $('input#number_vcb').css({'color':'#3f8040'});
           $('input#name_vcb').css({'color':'#3f8040'});
+          $('input[name=sell_submit]').removeClass('disabled')
         }
       }
     });
 
+    // validate form
+    var getLink = window.location.href.substr().split("/");
+    if (getLink[3]=='sell') {
+      $('div#page_sell').addClass("in active");
+      $('div#page_buy').removeClass("in active");
+      $('div#page_buy').addClass("fade");
+      if (getLink[4]=='btc') {
+        var minsell = 0.01
+      } else {
+        var minsell = 1
+      }
+    } else {
+      $('div#page_buy').addClass("in active");
+      $('div#page_sell').removeClass("in active");
+      $('div#page_sell').addClass("fade");
+    }
+    // end validate
+
     $('#quantity_sell').keyup(function(){
-      var quantity_sell = $('#quantity_sell').val();
-      var price_sell = $('input#giaban').val();
-      if (parseFloat(quantity_sell) >= 0.01 ) {
+      var quantity_sell = $('input[name=quantity_sell]').val();
+      var price_sell = $('li.list-group-item.exchange-active.active input[id=giaban]').val();
+
+      if (parseFloat(quantity_sell) >= minsell ) {
         $('input[name=quantity_sell]').css({'border':'1px solid #468847',
           'color':'#468847'
         });
@@ -67,31 +90,22 @@ $(function() {
           'color':'#a90000'
         });
         $('input[name=money_recieve]').css({'color':'#a90000'});
-        $('input[name=money_recieve]').val('Số lượng tối thiểu là 0.01 BTC')
+        $('input[name=money_recieve]').val('Số lượng tối thiểu là '+minsell);
+        $('input[name=sell_submit]').addClass('disabled')
       }
     });
   });
 
   // CHECK LINK ACTIVE
   $(function() {
-    var pgurl = window.location.href.substr(window.location.href.indexOf('/')+16);
+    var pgurl = window.location.href.substr().split("/");
     $("#mua_ban a").each(function(){
-      if($(this).attr("href") == pgurl || $(this).attr("href") == '' )
+      if($(this).attr("href") == "/"+pgurl[3]+"/"+pgurl[4] || $(this).attr("href") == '' )
         $(this).find('li.exchange-active').addClass('active');
     })
   });
 
-  var getLink = window.location.href.substr().split("/");
-  if (getLink[3]=='sell') {
-    $('div#page_sell').addClass("in active");
-    $('div#page_buy').removeClass("in active");
-    $('div#page_buy').addClass("fade");
 
-  } else {
-    $('div#page_buy').addClass("in active");
-    $('div#page_sell').removeClass("in active");
-    $('div#page_sell').addClass("fade");
-  }
   // END CHECK
-  
+
 });

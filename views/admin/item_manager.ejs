@@ -1,9 +1,9 @@
 <%- partial ('../common/admin_nav.ejs') %>
 
 <div class="container">
-  <h2>Danh sách Item</h2>
+  <h2>Danh sách Item<span class="pull-right"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#additemModal">Thêm Item</button></span></h2>
 
-  <table class="table table-bordered" id="manage_exchange">
+  <table class="table table-bordered" id="manage_item">
     <thead>
     <tr>
       <th>Tên Item</th>
@@ -29,4 +29,116 @@
   </table>
 </div>
 
-<%- partial ('../common/footer.ejs') %>
+
+<!-- Modal Add Item-->
+<div class="modal fade" id="additemModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Thêm Item Mới</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="addItemForm">
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="name">Tên Item:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="name" placeholder="Nhập tên item">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="icon">Icon:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="icon" placeholder="ví dụ : BTC">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="link">Link:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="link" placeholder="ví dụ : btc">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="price_buy">Giá Mua:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="price_buy" placeholder="Nhập giá mua">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="price_sell">Giá Bán:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="price_sell" placeholder="Nhập giá bán">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <button type="submit" class="btn btn-success">Đồng Ý</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!--// ENd Modal-->
+
+<!-- Modal Edit Item-->
+<div class="modal fade" id="additemModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sửa Item</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="addItemForm">
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="name">Tên Item:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="name" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="icon">Icon:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="icon" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="link">Link:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="link" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="price_buy">Giá Mua:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="price_buy" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="price_sell">Giá Bán:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="price_sell" value="">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <button type="submit" class="btn btn-success">Đồng Ý</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
