@@ -16,13 +16,13 @@
     </thead>
     <tbody>
     <% _.each(allItem, function(item) { %>
-    <tr>
+    <tr class="tr_<%= item.link %>">
       <td class="item_name"><%= item.name %></td>
       <td class="item_price_buy"><%= item.price_buy %></td>
       <td class="item_price_sell"><%= item.price_sell %></td>
       <td class="item_icon"><%= item.icon %></td>
       <td class="item_link"><%= item.link %></td>
-      <td class="item_submit"><a href="/admin/item/action/<%= item.link %>">Sửa Item</a></td>
+      <td class="item_submit"><a onclick="editItem()" href="#">Sửa Item</a></td>
     </tr>
     <% }) %>
     </tbody>
