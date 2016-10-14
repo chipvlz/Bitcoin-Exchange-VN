@@ -13,6 +13,9 @@ module.exports = {
     },
     bitcoin: {
       type: 'integer'
+    },
+    abc: {
+      type: 'string'
     }
   }
 };
