@@ -65,7 +65,7 @@ $(function() {
     );
     $('table#manage_item tbody tr.new_item').hide().delay(100).fadeIn(500);
     $('table#manage_item tbody tr.new_item').css('background', '#fdf59a');
-    $('#additemModal').modal('hide')
+    $('#additemModal').modal('hide');
   });
 
   // Cập nhật giá mua và giá bán Item
@@ -75,5 +75,19 @@ $(function() {
     var data = $('#form-capnhat').serialize();
     socket.get('/admin/setmoney?id=1&' + data)
   });
+
+    var statusgd = $('.trangthaigd').text();
+    $('#thanhtoangiaodich input.'+statusgd+'').attr("checked",true);
+
+  $('#thanhtoangiaodich').submit(function(s) {
+    console.log('cập nhật giao dịch');
+    s.preventDefault();
+    var data = $('#thanhtoangiaodich').serialize();
+    socket.get('/exchange/update?' + data)
+  });
+
+  socket.on('admin/updatestt',function(data){
+    alert('update ok')
+  })
 
 });

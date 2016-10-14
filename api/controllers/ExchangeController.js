@@ -114,6 +114,18 @@ module.exports = {
     Exchange.destroy({code:magiaodich}).exec(function(err,result) {
       return res.redirect('/admin/exchange')
     })
+  },
+
+  update: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest()
+    }
+    let params = req.allParams();
+    Exchange.update({id:params.id},{status:params.status}).exec(function(err,result){
+      if (err) { return res.negotiate }
+      sails.sockets.broadcast(params.excode,'update/exchange',{msg:params.excode});
+      sails.socket.blast('admin/updatestt')
+    })
   }
 
 };
