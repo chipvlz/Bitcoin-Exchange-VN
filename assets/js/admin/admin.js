@@ -76,8 +76,11 @@ $(function() {
     socket.get('/admin/setmoney?id=1&' + data)
   });
 
+  var getLink = window.location.href.substr().split("/");
+  if ( getLink[5]=="process") {
     var statusgd = $('.trangthaigd').text();
-    $('#thanhtoangiaodich input.'+statusgd+'').attr("checked",true);
+    $('#thanhtoangiaodich input[class='+statusgd+']').attr("checked",true);
+  }
 
   $('#thanhtoangiaodich').submit(function(s) {
     console.log('cập nhật giao dịch');
@@ -88,6 +91,26 @@ $(function() {
 
   socket.on('admin/updatestt',function(data){
     alert('update ok')
+  });
+
+  var trangthai = $('td.trangthaigd').text();
+  if(trangthai=='Pending') {
+    $('td.trangthaigd').addClass('text-primary')
+  } else if (trangthai=='Cancel') {
+    $('td.trangthaigd').addClass('text-danger')
+  } else {
+    $('td.trangthaigd').addClass('text-success')
+  }
+
+  $('#manage_exchange tbody tr').each(function(){
+    var txtcheck = $(this).find('td.ex_status').text();
+    if (txtcheck == 'Pending') {
+      $(this).find('td.ex_status').addClass('text-primary')
+    } else if (txtcheck == 'Cancel') {
+      $(this).find('td.ex_status').addClass('text-danger')
+    } else {
+      $(this).find('td.ex_status').addClass('text-success')
+    }
   })
 
 });

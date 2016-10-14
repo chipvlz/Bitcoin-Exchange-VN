@@ -104,8 +104,11 @@ module.exports = {
 
   process: (req,res) => {
     let magiaodich = req.params.code;
-    Exchange.findOne({code:magiaodich}).exec(function(err,result) {
-      return res.view('admin/process',{result});
+    Exchange.find({where:{status:'Pending'}}).exec(function(err,allExchange) {
+      if (err) { return res.negotiate }
+      Exchange.findOne({code:magiaodich}).exec(function(err,result) {
+        return res.view('admin/process',{result,allExchange});
+      })
     })
   },
 
@@ -121,10 +124,11 @@ module.exports = {
       return res.badRequest()
     }
     let params = req.allParams();
-    Exchange.update({id:params.id},{status:params.status}).exec(function(err,result){
+    Exchange.update({id:params.id},{status:params.status}).exec(function(err){
       if (err) { return res.negotiate }
-      sails.sockets.broadcast(params.excode,'update/exchange',{msg:params.excode});
-      sails.socket.blast('admin/updatestt')
+      sails.sockets.broadcast(params.excode,'update/exchange',{msg:params.status});
+      return res.redirect('/admin/exchange/process/'+params.excode);
+      // sails.sockets.blast('admin/updatestt')
     })
   }
 

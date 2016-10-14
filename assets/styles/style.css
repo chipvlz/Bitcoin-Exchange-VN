@@ -210,6 +210,10 @@ hr {
 li.list-group-item.exchange-active img {
   max-width:15px;
 }
+
+.ex_status {
+  font-weight: bold;
+}
 /* Add a gray background color and some padding to the footer */
 footer {
   padding:15px;
