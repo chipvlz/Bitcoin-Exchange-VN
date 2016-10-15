@@ -20,9 +20,14 @@
       <td class="item_name"><%= item.name %></td>
       <td class="item_price_buy"><%= item.price_buy %></td>
       <td class="item_price_sell"><%= item.price_sell %></td>
-      <td class="item_icon"><%= item.icon %></td>
-      <td class="item_link"><%= item.link %></td>
-      <td class="item_submit"><a onclick="editItem()" href="#">Sửa Item</a></td>
+      <td class="item_icon col-md-1"><%= item.icon %></td>
+      <td class="item_link col-md-1"><%= item.link %></td>
+      <td class="item_submit col-md-2 text-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-success btn-sm">Sửa</button>
+          <button type="button" class="btn btn-danger btn-sm">Xóa</button>
+        </div>
+      </td>
     </tr>
     <% }) %>
     </tbody>
@@ -88,7 +93,7 @@
 <!--// ENd Modal-->
 
 <!-- Modal Edit Item-->
-<div class="modal fade" id="additemModal" role="dialog">
+<div class="modal fade" id="edititemModal" role="dialog">
   <div class="modal-dialog modal-sm">
 
     <!-- Modal content-->
@@ -98,7 +103,7 @@
         <h4 class="modal-title">Sửa Item</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="addItemForm">
+        <form class="form-horizontal" id="editItemForm">
           <div class="form-group">
             <label class="control-label col-sm-4" for="name">Tên Item:</label>
             <div class="col-sm-8">

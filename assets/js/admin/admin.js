@@ -114,3 +114,23 @@ $(function() {
   })
 
 });
+
+  $('#manage_item tbody tr').each(function() {
+    $(this).click(function(){
+      var item_name = $(this).find('td.item_name').text();
+      var item_icon = $(this).find('td.item_icon').text();
+      var item_link = $(this).find('td.item_link').text();
+      var item_price_buy = $(this).find('td.item_price_buy').text();
+      var item_price_sell = $(this).find('td.item_price_sell').text();
+      $('#editItemForm input[name=name]').val(item_name);
+      $('#editItemForm input[name=icon]').val(item_icon);
+      $('#editItemForm input[name=link]').val(item_link);
+      $('#editItemForm input[name=price_buy]').val(item_price_buy);
+      $('#editItemForm input[name=price_sell]').val(item_price_sell);
+      
+       $('#edititemModal').modal();
+    })
+  });
+
+
+
