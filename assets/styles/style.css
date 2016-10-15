@@ -3,8 +3,11 @@
 /*html, body {*/
   /*height: 100%;*/
 /*}*/
-
+html,body {
+  min-height: 100%;
+}
 body {
+  background: #f5f5f5;
   letter-spacing: 0.5px;
 }
 a:hover, a:focus {
@@ -151,13 +154,8 @@ select#threads {
 select#status {
   max-width: 100px;
 }
-form#login {
-  max-width: 500px;
-  margin-bottom: 25px;
-  padding:20px;
-}
-
-form#register {
+form#login,form#register {
+  background: #fff;
   max-width: 500px;
   margin-bottom: 25px;
   padding:20px;
