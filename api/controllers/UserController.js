@@ -8,7 +8,7 @@
 module.exports = {
   login: (req, res) => {
     //Kiểm tra xem data gửi đến từ client (main.js xử lý) có đúng là socket không?
-    if (!req.isSocket) {return res.badRequest();}
+    if (!req.isSocket) {return res.badRequest('Tính hack hả chế , ngại ghê -_-');}
 
     let params = req.allParams();
     User.login(params.email, params.password).then((result) => {

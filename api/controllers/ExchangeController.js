@@ -71,18 +71,51 @@ module.exports = {
         code: newcode,
         name: params.name_vcb,
         number: params.number_vcb,
-        status: 'Đang xử lý'
+        status: 'Pending'
       }).exec(function(err,done) {
         if (err) {
           return res.negotiate(err);
         }
         sails.log('giao dịch mới tạo : ',done);
         sails.sockets.join(req, params.excode);
-        sails.sockets.broadcast(params.excode,'sell/pending',{send_code:newcode});
+        sails.sockets.broadcast(params.excode,'ex/pending',{send_code:newcode});
         sails.sockets.blast('add/exchange',done);
       })
     });
+  },
 
+  mua: (req,res) => {
+    let data = {
+      currentDate: (new Date()).toString()
+    };
+    if (!req.isSocket) {
+      return res.badRequest()
+    }
+    let params = req.allParams();
+    Exchange.findOne({code:params.excode}).exec(function(err,existscode){
+      if (existscode) {
+        var newcode = 'a'+existscode.code;
+      } else {
+        var newcode = params.excode;
+      }
+      Exchange.create({
+        ex: 'Mua',
+        quantity: params.quantity_buy,
+        item: params.item_buy,
+        price: params.price_buy,
+        code: newcode,
+        address: params.address,
+        status: 'Pending'
+      }).exec(function(err,done) {
+        if (err) {
+          return res.negotiate(err);
+        }
+        sails.log('giao dịch mới tạo : ',done);
+        sails.sockets.join(req, params.excode);
+        sails.sockets.broadcast(params.excode,'ex/pending',{send_code:newcode});
+        sails.sockets.blast('add/exchange',done);
+      })
+    });
   },
 
   view: (req,res) => {
@@ -121,14 +154,13 @@ module.exports = {
 
   update: (req,res) => {
     if (!req.isSocket) {
-      return res.badRequest()
+      return res.badRequest('Chỉ có Admin mới có quyền cập nhật dữ liệu')
     }
     let params = req.allParams();
     Exchange.update({id:params.id},{status:params.status}).exec(function(err){
       if (err) { return res.negotiate }
       sails.sockets.broadcast(params.excode,'update/exchange',{msg:params.status});
-      return res.redirect('/admin/exchange/process/'+params.excode);
-      // sails.sockets.blast('admin/updatestt')
+      sails.sockets.blast('admin/updatestt')
     })
   }
 

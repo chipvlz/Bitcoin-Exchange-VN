@@ -200,6 +200,10 @@ hr {
   margin-top:50px;
 }
 
+.page-setting {
+  max-width:500px;
+}
+
 .list-group-item.active, li.list-group-item.exchange-active:hover, .list-group-item.active:focus {
   background:#4b8c95;
   border:1px solid #4b8c95;
@@ -211,6 +215,10 @@ li.list-group-item.exchange-active img {
 
 .ex_status {
   font-weight: bold;
+}
+
+.thongtinchuyenkhoan {
+  max-width:500px;
 }
 /* Add a gray background color and some padding to the footer */
 footer {

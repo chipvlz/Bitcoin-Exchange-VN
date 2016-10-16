@@ -19,8 +19,8 @@
     <a href="/buy/<%= itembuy.link %>"><li class="list-group-item exchange-active">
         <img src="/images/<%= itembuy.link %>.ico"> <%= itembuy.name %>
 
-        <input type="text" class="sr-only" id="giaban" value="<%= itembuy.price_buy %>">
-        <span class="badge" id="<%= itembuy.link %>-price-sell">
+        <input type="text" class="sr-only" id="giamua" value="<%= itembuy.price_buy %>">
+        <span class="badge" id="<%= itembuy.link %>-price-buy">
         <%= itembuy.price_buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></span></li>
     </a>
     <% }) %>

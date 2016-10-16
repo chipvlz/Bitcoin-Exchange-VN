@@ -1,11 +1,13 @@
 <%- partial ('../common/admin_nav.ejs') %>
 
 <div class="container">
-  <h2>Danh sách Item<span class="pull-right"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#additemModal">Thêm Item</button></span></h2>
+  <h2>Danh sách Item<span class="pull-right">
+      <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#additemModal"><i class="fa fa-plus fa-lg"></i> Thêm Item</a></span></h2>
 
   <table class="table table-bordered" id="manage_item">
     <thead>
     <tr>
+      <th>ID</th>
       <th>Tên Item</th>
       <th>Giá mua</th>
       <th>Giá bán</th>
@@ -16,17 +18,16 @@
     </thead>
     <tbody>
     <% _.each(allItem, function(item) { %>
-    <tr class="tr_<%= item.link %>">
+    <tr class="tr_<%= item.id %>">
+      <td class="item_id"><%= item.id %></td>
       <td class="item_name"><%= item.name %></td>
       <td class="item_price_buy"><%= item.price_buy %></td>
       <td class="item_price_sell"><%= item.price_sell %></td>
       <td class="item_icon col-md-1"><%= item.icon %></td>
       <td class="item_link col-md-1"><%= item.link %></td>
       <td class="item_submit col-md-2 text-center">
-        <div class="btn-group">
-          <button type="button" class="btn btn-success btn-sm">Sửa</button>
-          <button type="button" class="btn btn-danger btn-sm">Xóa</button>
-        </div>
+        <a class="btn btn-primary btn-sm edit_item"><i class="fa fa-pencil-square-o fa-lg"></i> Sửa</a>
+        <a class="btn btn-danger btn-sm del_item"><i class="fa fa-trash-o fa-lg"></i> Xóa</a>
       </td>
     </tr>
     <% }) %>
@@ -93,7 +94,7 @@
 <!--// ENd Modal-->
 
 <!-- Modal Edit Item-->
-<div class="modal fade" id="edititemModal" role="dialog">
+<div class="modal fade" id="editItemModal" role="dialog">
   <div class="modal-dialog modal-sm">
 
     <!-- Modal content-->
@@ -104,6 +105,7 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="editItemForm">
+          <input type="text" class="sr-only form-control" name="id" value="">
           <div class="form-group">
             <label class="control-label col-sm-4" for="name">Tên Item:</label>
             <div class="col-sm-8">
@@ -136,8 +138,8 @@
           </div>
 
           <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-8">
-              <button type="submit" class="btn btn-success">Đồng Ý</button>
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-success">Sửa Item</button>
             </div>
           </div>
         </form>
@@ -145,5 +147,28 @@
 
     </div>
 
+  </div>
+</div>
+
+<!--// Modal Del Item-->
+<div class="modal fade" id="delItemModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">XÓA ITEM</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc là muốn xóa Item <span class="item_name"></span> không?</p>
+        <form class="form-horizontal" id="delItemForm">
+          <input type="text" class="sr-only" name="id" value="">
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-success">Xóa Item</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,43 +1,39 @@
 <%- partial ('../common/navbar.ejs') %>
-
 <div class="container">
   <div class="panel panel-warning">
     <div class="panel-heading">Kiểm Tra Giao Dịch</div>
+
+    <% if (foundBill.ex == 'Bán') { %>
     <div class="panel-body">
       <table class="table table-bordered">
-
         <tbody>
         <tr>
           <td>Loại giao dịch</td>
-          <td><%= foundBill.ex %> <%= foundBill.item %></td>
+          <td><%= foundBill.ex %> <%= foundBill.quantity %> <%= foundBill.item %></td>
         </tr>
-
         <tr>
           <td>Mã giao dịch</td>
           <td><%= foundBill.code %></td>
         </tr>
-
         <tr>
           <td>Số tài khoản </td>
           <td><%= foundBill.number %></td>
         </tr>
-
         <tr>
           <td>Tên người nhận</td>
           <td><%= foundBill.name %></td>
         </tr>
-
         <tr>
           <td>Số tiền nhận</td>
           <td><%= foundBill.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> VNĐ</td>
         </tr>
-
         <tr>
           <td>Trạng Thái</td>
-          <td><%= foundBill.status %></td>
+          <td><i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> <%= foundBill.status %></td>
         </tr>
         </tbody>
       </table>
+
       <p>Sau khi chuyển thanh toán , bạn có thể
         <a href="https://blockchain.info/address/12XzjrsLeMJ9PnkW8Wn5va35cVWDu2Z4xi"><kbd>kiểm tra giao dịch tại đây</kbd></a>
         ,Admin sẽ thanh toán ngay khi có 1 xác nhận trong link blockchain trên</p>
@@ -47,16 +43,63 @@
         <p>Vui lòng chuyển <strong><%= foundBill.quantity %> <%= foundBill.item %></strong> đến địa chỉ </p>
         <p><strong>12XzjrsLeMJ9PnkW8Wn5va35cVWDu2Z4xi</strong></p>
       </div>
-
     </div>
-
+    <% } else { %>
+    <div class="panel-body body-buy">
+      <table class="table table-bordered">
+        <tbody>
+        <tr>
+          <td>Loại giao dịch</td>
+          <td><%= foundBill.ex %> <%= foundBill.quantity %> <%= foundBill.item %></td>
+        </tr>
+        <tr>
+          <td>Mã giao dịch</td>
+          <td><%= foundBill.code %></td>
+        </tr>
+        <tr>
+          <td>Số tiền trả</td>
+          <td><%= foundBill.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> VNĐ</td>
+        </tr>
+        <tr>
+          <td>Trạng Thái</td>
+          <td><i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> <%= foundBill.status %></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="alert alert-info">
+        <h4>Vui lòng chuyển số tiền là <strong><%= foundBill.price %> VND</strong> đến tài khoản bên dưới </h4>
+        <table class="table table-condensed">
+          <tbody>
+          <tr>
+            <td>Số tài khoản</td>
+            <td><strong>0081000660051</strong></td>
+          </tr>
+          <tr>
+            <td>Tên người hưởng</td>
+            <td><strong>TRẦN CÁT KHÁNH</strong></td>
+          </tr>
+          <tr>
+            <td>Ngân hàng Vietcombank</td>
+            <td><strong>CHI NHÁNH VŨNG TÀU</strong></td>
+          </tr>
+          <tr>
+            <td>Nội dung thanh toán</td>
+            <td><strong>Thanh toán đơn hàng <%= foundBill.code %></strong></td>
+          </tr>
+          <tr>
+            <td colspan="2">Vui lòng ghi chính xác nội dung thanh toán bao gồm mã giao dịch để chúng tôi thanh toán dễ dàng hơn ,
+            sau khi nhận được thanh toán của bạn , chúng tôi sẽ chuyển ngay <strong><%= foundBill.quantity %> <%= foundBill.item %></strong>
+              đến ví của bạn tại địa chỉ: <strong><%= foundBill.address %></strong></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% } %>
     <div class="panel-footer">
-
-
       <blockquote>
         <h4><p>Hãy lưu <kbd>mã giao dịch</kbd> của bạn ở 1 nơi an toàn</p></h4>
         <p>Giao dịch của bạn sẽ được xử lý trong thời gian nhanh nhất , nếu sau 15 phút mà bạn chưa nhận được giao dịch thành công vui lòng liên hệ với Admin .</p>
-        <footer>Khánh Trần</footer>
       </blockquote>
     </div>
   </div>

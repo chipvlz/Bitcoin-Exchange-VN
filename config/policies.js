@@ -33,10 +33,19 @@ module.exports.policies = {
   },
   'UserController': {
     '*': true,
-    'login': true
-    // 'userid': 'isMeAuth'
+    'login': true,
+    'allusers': 'isAdminAuth'
   },
   'AdminController': {
+    '*': 'isAdminAuth'
+  },
+  'ExchangeController': {
+    'manager': 'isAdminAuth',
+    'process': 'isAdminAuth',
+    'delete': 'isAdminAuth',
+    'update': 'isAdminAuth'
+  },
+  'ItemController': {
     '*': 'isAdminAuth'
   }
 

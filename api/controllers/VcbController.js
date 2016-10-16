@@ -8,7 +8,8 @@ var request = require('request');
 module.exports = {
 
 	getname: (req,res) => {
-    if (!req.isSocket) {return res.badRequest();}
+    if (!req.isSocket) {
+      return res.badRequest('Bạn làm gì có khả năng chôm được chức năng này, đừng cố thể hiện nữa nhe , IP của bạn đã được lưu lại là :'+req.ip);}
     let params = req.allParams();
 
     Setting.findOne({id:1}).exec(function(err,test){
