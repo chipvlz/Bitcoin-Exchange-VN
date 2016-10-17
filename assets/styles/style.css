@@ -13,6 +13,36 @@ body {
 a:hover, a:focus {
   text-decoration: none !important;
 }
+ /*datatables*/
+#manage_exchange_length label,#manage_item_length label,#manage_user_length label {
+  margin-left: 1px;
+  background:#337ab7;
+  padding:12px 15px;
+  color:#fff;
+  float:left;
+}
+#manage_exchange_filter label, #manage_item_filter label, #manage_user_filter label {
+  background:#337ab7;
+  padding:7px 15px;
+  color:#fff;
+  margin-left:1px;
+}
+#manage_exchange_filter input, #manage_item_filter input, #manage_user_filter input {
+  border:none;
+  margin-left:10px;
+  background: #006496;
+  height:30px;
+  padding:5px;
+}
+div#manage_exchange_paginate, div#manage_item_paginate ,div#manage_user_paginate {
+  float:right;
+  padding:0 0 15px 0 ;
+}
+div#manage_exchange_info, div#manage_item_info, div#manage_user_info {
+  float:left;
+}
+
+  /*end*/
 
 .list-group-item:last-child {
   margin-bottom: -1px;
@@ -161,7 +191,7 @@ form#login,form#register {
   padding:20px;
 }
 
-table#manage_exchange > thead,table#manage_item > thead {
+table > thead,table#manage_item > thead {
   background:#a94442;
   color:#fff
 }
@@ -170,7 +200,7 @@ table#manage_exchange th {
   letter-spacing: 0.8px;
 }
 
-.panel-footer {
+.panel-footer ,#page-item_manager,#page-ex_manager,#page-user_manager {
   background: #fff;
 }
 blockquote {

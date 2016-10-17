@@ -7,6 +7,28 @@ $(function() {
     console.log(result)
   });
 
+  $(document).ready(function() {
+    $('#manage_exchange').DataTable({
+      "language": {
+        "url": "/datatables/language.json"
+      }
+    });
+  } );
+  $(document).ready(function() {
+    $('#manage_item').DataTable({
+      "language": {
+        "url": "/datatables/language.json"
+      }
+    });
+  } );
+  $(document).ready(function() {
+    $('#manage_user').DataTable({
+      "language": {
+        "url": "/datatables/language.json"
+      }
+    });
+  } );
+
   // Function 1: Notification of Pusher Application on my iPhone
   socket.on('add/exchange', function(data) {
     var formData = {

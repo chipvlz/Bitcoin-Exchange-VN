@@ -1,9 +1,11 @@
 <%- partial ('../common/admin_nav.ejs') %>
 
-<div class="container">
-  <h2>Danh sách thành viên</h2>
-  <p class="pull-right"><button id="removeid" type="button" class="btn btn-danger">Xóa</button></p>
-  <table class="table table-hover">
+<div class="container" id="page-user_manager">
+  <h2>Danh sách thành viên
+    <button id="removeid" type="button" class="btn btn-danger pull-right"><i class="fa fa-trash-o fa-lg"></i> Xóa hết</button>
+  </h2>
+
+  <table class="table table-hover" id="manage_user">
     <thead>
     <tr>
       <th>ID</th>
@@ -25,8 +27,8 @@
       <td><%= user.group  %></td>
       <td><%= user.email %></td>
       <td><%= user.point %></td>
-      <td><a href="/admin/user/<%= user.id %>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-      <td><a href="/admin/user/del/<%= user.id %>"><span class="glyphicon glyphicon-remove"></span></a></td>
+      <td><a class="btn btn-success" href="/admin/user/<%= user.id %>"><i class="fa fa-pencil fa-lg"></i> Sửa</a></td>
+      <td><a class="btn btn-danger" href="/admin/user/del/<%= user.id %>"><i class="fa fa-trash-o fa-lg"></i> Xóa</a></td>
     </tr>
     <% }) %>
     </tbody>
