@@ -84,18 +84,16 @@ $(function() {
       var price_sell = $('li.list-group-item.exchange-active.active input[id=giaban]').val();
 
       if (parseFloat(quantity_sell) >= minsell ) {
-        $('input[name=quantity_sell]').css({'border':'1px solid #468847',
-          'color':'#468847'
-        });
+        $('input[name=quantity_sell]').addClass('input-success');
+        $('input[name=quantity_sell]').removeClass('input-error');
         $('input[name=money_recieve]').css({'color':'#468847'});
         var price_count = (parseFloat(quantity_sell) * parseFloat(price_sell)).toFixed(2);
         var count_done = price_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         $('input[name=money_recieve]').val(count_done);
         $('input[name=sell_submit]').removeClass('disabled')
       } else {
-        $('input[name=quantity_sell]').css({'border':'1px solid #a90000',
-          'color':'#a90000'
-        });
+        $('input[name=quantity_sell]').addClass('input-error');
+        $('input[name=quantity_sell]').removeClass('input-success');
         $('input[name=money_recieve]').css({'color':'#a90000'});
         $('input[name=money_recieve]').val('Số lượng tối thiểu là '+minsell);
         $('input[name=sell_submit]').addClass('disabled')
