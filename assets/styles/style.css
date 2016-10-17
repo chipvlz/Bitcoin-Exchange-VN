@@ -13,6 +13,24 @@ body {
 a:hover, a:focus {
   text-decoration: none !important;
 }
+
+.input-error ,.addon-error{
+  border:1px solid #ba4d42;
+  color:#ba4d42;
+  background:rgb(243, 225, 223);
+}
+.addon-error {
+  border-left:none;
+}
+
+.input-success, .addon-success {
+  border: 1px solid #468847;
+  color:#336734;
+}
+.addon-success {
+  border-left:none;
+}
+
  /*datatables*/
 #manage_exchange_length label,#manage_item_length label,#manage_user_length label {
   margin-left: 1px;
