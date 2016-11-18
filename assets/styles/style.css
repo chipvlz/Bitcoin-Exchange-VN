@@ -3,13 +3,64 @@
 /*html, body {*/
   /*height: 100%;*/
 /*}*/
-
+html,body {
+  min-height: 100%;
+}
 body {
+  background: #f5f5f5;
   letter-spacing: 0.5px;
 }
 a:hover, a:focus {
   text-decoration: none !important;
 }
+
+.input-error ,.addon-error{
+  border:1px solid #ba4d42;
+  color:#ba4d42;
+  background:rgb(243, 225, 223);
+}
+.addon-error {
+  border-left:none;
+}
+
+.input-success, .addon-success {
+  border: 1px solid #468847;
+  color:#336734;
+}
+.addon-success {
+  border-left:none;
+}
+
+ /*datatables*/
+#manage_exchange_length label,#manage_item_length label,#manage_user_length label {
+  margin-left: 1px;
+  background:#337ab7;
+  padding:12px 15px;
+  color:#fff;
+  float:left;
+}
+#manage_exchange_filter label, #manage_item_filter label, #manage_user_filter label {
+  background:#337ab7;
+  padding:7px 15px;
+  color:#fff;
+  margin-left:1px;
+}
+#manage_exchange_filter input, #manage_item_filter input, #manage_user_filter input {
+  border:none;
+  margin-left:10px;
+  background: #006496;
+  height:30px;
+  padding:5px;
+}
+div#manage_exchange_paginate, div#manage_item_paginate ,div#manage_user_paginate {
+  float:right;
+  padding:0 0 15px 0 ;
+}
+div#manage_exchange_info, div#manage_item_info, div#manage_user_info {
+  float:left;
+}
+
+  /*end*/
 
 .list-group-item:last-child {
   margin-bottom: -1px;
@@ -151,19 +202,14 @@ select#threads {
 select#status {
   max-width: 100px;
 }
-form#login {
+form#login,form#register {
+  background: #fff;
   max-width: 500px;
   margin-bottom: 25px;
   padding:20px;
 }
 
-form#register {
-  max-width: 500px;
-  margin-bottom: 25px;
-  padding:20px;
-}
-
-table#manage_exchange > thead,table#manage_item > thead {
+table > thead,table#manage_item > thead {
   background:#a94442;
   color:#fff
 }
@@ -172,7 +218,7 @@ table#manage_exchange th {
   letter-spacing: 0.8px;
 }
 
-.panel-footer {
+.panel-footer ,#page-item_manager,#page-ex_manager,#page-user_manager {
   background: #fff;
 }
 blockquote {
@@ -202,6 +248,10 @@ hr {
   margin-top:50px;
 }
 
+.page-setting {
+  max-width:500px;
+}
+
 .list-group-item.active, li.list-group-item.exchange-active:hover, .list-group-item.active:focus {
   background:#4b8c95;
   border:1px solid #4b8c95;
@@ -209,6 +259,14 @@ hr {
 }
 li.list-group-item.exchange-active img {
   max-width:15px;
+}
+
+.ex_status {
+  font-weight: bold;
+}
+
+.thongtinchuyenkhoan {
+  max-width:500px;
 }
 /* Add a gray background color and some padding to the footer */
 footer {

@@ -1,5 +1,5 @@
 <%- partial ('../common/navbar.ejs') %>
-<div class="container text-center">
+<div class="container text-center" id="register-page">
   <h2>Đăng Ký</h2>
   <span class="help-block">Đăng ký để sử dụng đầy đủ chức năng của Website mà không bị giới hạn .</span>
   <form role="form" class="form-register center-block" id="register">
@@ -29,7 +29,7 @@
       <input type="text" name="birthday" id="inputBirthday" class="form-control" placeholder="Nhập Ngày Sinh" required autofocus>
     </div>
 
-
+    <div class="form-group g-recaptcha" data-sitekey="6LeYchMTAAAAAGq_hZ4jhpe2Y5VpXkWUKWCX7Rc-"></div>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng Ký</button>
   </form>
@@ -43,6 +43,7 @@
         <div class="modal-body">
           <p class="notice-text"></p>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
         </div>

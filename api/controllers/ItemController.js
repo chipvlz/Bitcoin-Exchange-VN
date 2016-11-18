@@ -17,7 +17,7 @@ module.exports = {
 
   add: (req,res) => {
     if (!req.isSocket) {
-      return res.badRequest()
+      return res.badRequest('THÔNG BÁO :  Chỉ có Admin mới có quyền thêm Item')
     }
     let params = req.allParams();
         params.buy = 1;
@@ -29,6 +29,37 @@ module.exports = {
       console.log('new item',newitem);
       sails.sockets.blast('add/item',newitem)
     })
+  },
+
+  edit: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest('THÔNG BÁO : Bạn không phá được đâu? đừng cố thể hiện nữa :(')
+    }
+    let params = req.allParams();
+    console.log(params);
+    Item.update({id:params.id},{
+      name:params.name,
+      price_buy:params.price_buy,
+      price_sell:params.price_sell,
+      icon:params.icon,
+      link:params.link
+    }).exec(function(err) {
+      if (err) {
+        return res.negotiate(err)
+      }
+      sails.sockets.blast('edit/item',{msg:params.id})
+    })
+  },
+
+  delete: (req,res) => {
+      if (!req.isSocket) {
+        return res.badRequest('THÔNG BÁO : Bạn không phá được đâu? đừng cố thể hiện nữa :(')
+      }
+      let params = req.allParams();
+      Item.destroy(params).exec(function(err) {
+        if (err) { return res.negotiate(err) }
+        sails.sockets.blast('delete/item',{msg:params.id})
+      })
   }
 };
 

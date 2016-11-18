@@ -1,6 +1,6 @@
 <%- partial ('../common/admin_nav.ejs') %>
 
-<div class="container">
+<div class="container" id="page-ex_manager">
   <h2>Danh sách giao dịch</h2>
   <p>xử lý các giao dịch theo 3 trạng thái:</p>
   <table class="table table-bordered" id="manage_exchange">
@@ -11,7 +11,7 @@
       <th>Số tài khoản</th>
       <th>Loại GD</th>
       <th>Loại tiền ảo</th>
-      <th>Số lượng</th>
+      <th>SL</th>
       <th>Giá GD</th>
       <th>Trạng thái</th>
       <th>Xử lý</th>
@@ -29,8 +29,8 @@
       <td class="ex_price"><%= exchange.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></td>
       <td class="ex_status"><%= exchange.status %></td>
       <td class="ex_submit">
-        <a href="/admin/exchange/process/<%= exchange.code %>"><i class="fa fa-bank fa-lg" aria-hidden="true"></i></a>
-        <a href="/admin/exchange/delete/<%= exchange.code %>"><i class="fa fa-remove fa-lg" aria-hidden="true"></i></a>
+        <a class="btn btn-primary" href="/admin/exchange/process/<%= exchange.code %>"><i class="fa fa-bank fa-sm" aria-hidden="true"></i></a>
+        <a class="btn btn-danger" href="/admin/exchange/delete/<%= exchange.code %>"><i class="fa fa-remove fa-sm" aria-hidden="true"></i></a>
       </td>
     </tr>
     <% }) %>
@@ -72,4 +72,4 @@
   </div>
 </div>
 
-<%- partial ('../common/footer.ejs') %>
+

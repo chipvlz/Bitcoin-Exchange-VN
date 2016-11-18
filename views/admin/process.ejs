@@ -1,6 +1,8 @@
 <%- partial ('../common/admin_nav.ejs') %>
-
 <div class="container">
+<div class="col-sm-8 row">
+
+  <div class="container col-sm-12">
   <div class="panel panel-primary">
     <div class="panel-heading">THÔNG TIN GIAO DỊCH</div>
     <div class="panel-body">
@@ -38,7 +40,7 @@
   </div>
 </div>
 
-<div id="sell" class="container collapse">
+<div id="sell" class="container col-sm-12 collapse">
   <div class="panel panel-danger">
     <div class="panel-heading">XÁC NHẬN THANH TOÁN</div>
 
@@ -66,6 +68,18 @@
   </div>
 
 </div>
+</div>
 
-<%- partial ('../common/footer.ejs') %>
+<div class="col-sm-4 row">
+  <div class="panel panel-warning">
+    <div class="panel-heading">GIAO DỊCH CHƯA GIẢI QUYẾT</div>
+      <ul class="list-group">
+        <% _.each(allExchange, function(exchange) { %>
+        <li class="list-group-item"><%= exchange.ex %> <%= exchange.quantity %> <%= exchange.item %>
+          <a href="/admin/exchange/process/<%= exchange.code %>" type="button" class="btn btn-warning btn-xs pull-right">Thanh Toán</a></li>
+        <% }) %>
+      </ul>
 
+  </div>
+</div>
+</div>

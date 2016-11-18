@@ -1,51 +1,105 @@
 <%- partial ('../common/navbar.ejs') %>
-
 <div class="container">
   <div class="panel panel-warning">
     <div class="panel-heading">Kiểm Tra Giao Dịch</div>
+
+    <% if (foundBill.ex == 'Bán') { %>
     <div class="panel-body">
       <table class="table table-bordered">
-
         <tbody>
         <tr>
           <td>Loại giao dịch</td>
-          <td><%= foundBill.ex %> <%= foundBill.item %></td>
+          <td><%= foundBill.ex %> <%= foundBill.quantity %> <%= foundBill.item %></td>
         </tr>
-
         <tr>
           <td>Mã giao dịch</td>
           <td><%= foundBill.code %></td>
         </tr>
-
         <tr>
           <td>Số tài khoản </td>
           <td><%= foundBill.number %></td>
         </tr>
-
         <tr>
           <td>Tên người nhận</td>
           <td><%= foundBill.name %></td>
         </tr>
-
         <tr>
           <td>Số tiền nhận</td>
           <td><%= foundBill.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> VNĐ</td>
         </tr>
-
         <tr>
           <td>Trạng Thái</td>
-          <td><%= foundBill.status %></td>
+          <td><i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> <%= foundBill.status %></td>
         </tr>
         </tbody>
       </table>
+
+      <p>Sau khi chuyển thanh toán , bạn có thể
+        <a href="https://blockchain.info/address/12XzjrsLeMJ9PnkW8Wn5va35cVWDu2Z4xi"><kbd>kiểm tra giao dịch tại đây</kbd></a>
+        ,Admin sẽ thanh toán ngay khi có 1 xác nhận trong link blockchain trên</p>
+      <div class="alert alert-warning text-center">
+
+        <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAFW0lEQVR4Xu2d25ajOhBDk///6MxiNZ0hgKt2KQW5tM7jhBhbslQXu3Oul8vldjnwv9vtcfjr9Xp/2/Kz5b9PDxzxmbLMaP7KeNl3JnRMSICSCZnBsUJWNpFJK/p8ZEvTd6LPRmNGdvbMPMn7qOU+M4/l+h4sa/1y9SUmpIacCUnw6t5QGT0m5FMJWXv3aB0dPhu9q5LpUNulaXZlbR14hTGk4wUqQEvyTciMhgl5LFCzLLEDr9MVMpp0pCTVzqg6M6CXaqUBPwpTkeJNyI4b0M1RsVJqwSbEhPxvLka7ZmQTayuoZEFqd+GrLYu0K7JCisYGGmQzkk1IwogJKQLU0UCsZCkdqlPs8/SgnlkHAYJmLBXb6JiXSriy2bL5vrSXpQbrbFHkcxpT6Cai1pnNzYQULZgG9Qx44iinn4dYIVtahgpRGa748SsvOSjHwmrgVrH8U5ccTMjOOb0VEmvneutKFaBGFUJoywNOYfexkXpOhudiQmZ6TEjhdqIV8oz2k+/aspIYsrxKWknxooyFpsGVk8CO+kU57VPb+/QSxRor+YDKhGzP26NNQ/EyITOK9KyfNhdbFEKtphJioonRHbWR9eJPGipzWT5LG4hnj48rdTUfNyFx7yqMIVbIDwK0Ta/iFY2PC0O60ysLor2limVRK+pSPLU0ulYTQhFNgn82jAnZQYhmSEd0BkzIpxIS/dEn9Vk1585k/vt5pVpWVaB+b5S6U+zWMTdMe+mgJmSbnVHsTMhAlm+jkOUBVSW1japsxYoq71aahNOcaEqsVvR0/PA5ExIXgxTkCuEmZN7yFXBHCUXkDHR8E/IthKi9GhpfcLG06u7SDKajJ6VioGaeD62TygI6QDEhW7pNCE0Jd56jMWMd8D++29ulXDoOBZq6xLr4C3tl9KKcWidQD1Y9dz0+BZPOa/2cWkDSzfAR7Xe6mEotYEISD7ZC5gI1siz13pRSPHWpQI3RIytSMahY/ANeJmTbOqF3qCrxiiYAYQxRd4cVsr0o0U6IekhEg2fFsmg3NkwvxbtdFNiKdS7XjhViQn4gNiHJVlMBOluRVK1WSMVbzlZIpRboaAzSXVrJZqL4op40jsas4EXjXthcPAJ0mlLiBQTB+ey4R9fWckBV2Q0qkSP3+FMKUf+CilpD1PyjlvXKBmLl3Ur9tWlempCtLs8siE3IjECXDY5sVu5lWSFvphDaXFQLsGKaf3+cHgRVkg2auUWxoKMVFGV/cmGoAk2/Z0J2kKKgUJArz9F3f7VCKoujQTGS5xGpszov1aYqm+z3WWxZJuQHMrU+ouSYkBkp1QYp0PQ5TAgd8JnnRruvksVRYNV5quN3KAtfA1IXt6lEB81AEzLbJb0oZ0JyBKyQEw6MVOXm9O0/gX/rRH3BK9Peyo4dHRmoZyo0/Z5wfXj3K/9fuEfXISZkR0ZWyBaUsN6Lur2qTXWcXavqieasnGR2xRA6zum//V6xEdJqqGwaE5L8sjUFk9peNp4JMSH3PdJiWdReKqnhchersaaSUo5U0zFGpkjlc/lXSWnQpQuv2BIdkwZ42t5RAK5+x4TsIEadoQo2ef50QuhiseeKNxcJOHvPUHXS+U/vWGJiQorMmJAEsMqlNqrOjthjhTzRtqmI5KsVQneReguwkj0pc6HkrOcRHuEefXNRrVFG9cr07xQ8EzIjQAs+CqwVUjHVJI/vkLUauCvvHvW5KgVrVCxTxZ/e7Y0mNlqQCbFC7ghYITMUUau8u4+2ThRoDOyoVzbvfpcz9criKhY2GpcWiR1xKCLchOxkgpXNgINz8MOd+Ez9ydCx+3XVg6ktZUXXpynkH6YD2g0LgD7GAAAAAElFTkSuQmCC"></p>
+        <p>Vui lòng chuyển <strong><%= foundBill.quantity %> <%= foundBill.item %></strong> đến địa chỉ </p>
+        <p><strong>12XzjrsLeMJ9PnkW8Wn5va35cVWDu2Z4xi</strong></p>
+      </div>
     </div>
+    <% } else { %>
+    <div class="panel-body body-buy">
+      <table class="table table-bordered">
+        <tbody>
+        <tr>
+          <td>Loại giao dịch</td>
+          <td><%= foundBill.ex %> <%= foundBill.quantity %> <%= foundBill.item %></td>
+        </tr>
+        <tr>
+          <td>Mã giao dịch</td>
+          <td><%= foundBill.code %></td>
+        </tr>
+        <tr>
+          <td>Số tiền trả</td>
+          <td><%= foundBill.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> VNĐ</td>
+        </tr>
+        <tr>
+          <td>Trạng Thái</td>
+          <td><i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i> <%= foundBill.status %></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="alert alert-info">
+        <h4>Vui lòng chuyển số tiền là <strong><%= foundBill.price %> VND</strong> đến tài khoản bên dưới </h4>
+        <table class="table table-condensed">
+          <tbody>
+          <tr>
+            <td>Số tài khoản</td>
+            <td><strong>0081000660051</strong></td>
+          </tr>
+          <tr>
+            <td>Tên người hưởng</td>
+            <td><strong>TRẦN CÁT KHÁNH</strong></td>
+          </tr>
+          <tr>
+            <td>Ngân hàng Vietcombank</td>
+            <td><strong>CHI NHÁNH VŨNG TÀU</strong></td>
+          </tr>
+          <tr>
+            <td>Nội dung thanh toán</td>
+            <td><strong>Thanh toán đơn hàng <%= foundBill.code %></strong></td>
+          </tr>
+          <tr>
+            <td colspan="2">Vui lòng ghi chính xác nội dung thanh toán bao gồm mã giao dịch để chúng tôi thanh toán dễ dàng hơn ,
+            sau khi nhận được thanh toán của bạn , chúng tôi sẽ chuyển ngay <strong><%= foundBill.quantity %> <%= foundBill.item %></strong>
+              đến ví của bạn tại địa chỉ: <strong><%= foundBill.address %></strong></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% } %>
     <div class="panel-footer">
-
-
       <blockquote>
         <h4><p>Hãy lưu <kbd>mã giao dịch</kbd> của bạn ở 1 nơi an toàn</p></h4>
         <p>Giao dịch của bạn sẽ được xử lý trong thời gian nhanh nhất , nếu sau 15 phút mà bạn chưa nhận được giao dịch thành công vui lòng liên hệ với Admin .</p>
-        <footer>Khánh Trần</footer>
       </blockquote>
     </div>
   </div>

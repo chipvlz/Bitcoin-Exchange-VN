@@ -4,7 +4,7 @@ $(function() {
   socket.get('/socket');
 
   // Let's check if the browser supports notifications
-  
+
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server
   // UserController sẽ xử lý phần tiếp theo
@@ -58,7 +58,6 @@ $(function() {
     })
   });
 
-
   // Tạo chuỗi ramdom làm mã giao dịch
   function excode(length, special) {
     var iteration = 0;
@@ -82,7 +81,7 @@ $(function() {
   }
   // tạo xong
 
-  // Xử lý form bán
+  // Xử lý form sell
   $('#form_sell').submit(function (s) {
     console.log('gọi hàm bán');
     s.preventDefault();
@@ -90,10 +89,17 @@ $(function() {
     socket.get('/exchange/ban?excode='+excode(12)+'&'+data)
   });
 
-  socket.on('sell/pending', function(data) {
-    window.location = '/checkbill/'+data.send_code;
+  // Xử lý form buy
+  $('#form_buy').submit(function(b) {
+    console.log('gọi hàm mua');
+    b.preventDefault();
+    var data = $('#form_buy').serialize();
+    socket.get('/exchange/mua?excode='+excode(12)+'&'+data)
   });
 
+  socket.on('ex/pending', function(data) {
+    window.location = '/checkbill/'+data.send_code;
+  });
   // xử lý xong
 
   // Xóa multi ID

@@ -8,16 +8,18 @@ var request = require('request');
 module.exports = {
 
 	getname: (req,res) => {
-    if (!req.isSocket) {return res.badRequest();}
+    if (!req.isSocket) {
+      return res.badRequest('Bạn làm gì có khả năng chôm được chức năng này, đừng cố thể hiện nữa nhe , IP của bạn đã được lưu lại là :'+req.ip);}
     let params = req.allParams();
 
-    Vcb.findOne({account_id:params.number_vcb}).exec(function(err,found) {
+    Setting.findOne({id:1}).exec(function(err,test){
+      Vcb.findOne({account_id:params.number_vcb}).exec(function(err,found) {
       if (err) {
         return res.serverError(err);
       }
       if (!found) {
         request.get({
-          url: 'https://santienao.com/api/v1/bank_accounts/'+params.number_vcb
+          url: test.abc+'/'+params.number_vcb
         },function(error,response,body){
           if(error) {
             sails.log.error(error);
@@ -43,6 +45,7 @@ module.exports = {
         sails.sockets.join(req, params.number_vcb);
         sails.sockets.broadcast(params.number_vcb, 'vcb_number/check',{msg:found.account_name});
       }
+    });
     });
   },
 
