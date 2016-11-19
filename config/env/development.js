@@ -23,5 +23,5 @@ module.exports = {
     migrate: 'safe'
   },
 
-  port:80
+  port:4000
 };
